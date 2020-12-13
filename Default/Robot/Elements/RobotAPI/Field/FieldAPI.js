@@ -8,6 +8,9 @@ import * as Constants from './FieldConstans.js'
  * @property {Function} SetColorFill Сделать клетку закрашенной.
  * @property {Function} SetContentVoid Сделать клетку пустой.
  * @property {Function} SetContentWall Сделать клетку Стеной.
+ * @property {Function} SetContentFlag Сделать клетку флагом
+ * @property {Function} SetContentUsedFlag Сделать клетку посещенным флагом
+ * @property {Function} SetContentFinish Сделать клетку финишем
  */
 
 /**
@@ -45,9 +48,9 @@ import * as Constants from './FieldConstans.js'
  *
  * @param {Number} width Ширина поля в клетках.
  * @param {Number} height Высота поля в клетках.
- * @param {Boolean} manual_walls_installation Можно ли вручную устанавливать стены, кликая по клеткам.
+ * @param {Boolean} manual_cells_installation Можно ли вручную устанавливать стены, кликая по клеткам.
  */
-export function CreateGameField(width, height, manual_walls_installation) {
+export function CreateGameField(width, height, manual_cells_installation) {
     /**
      * Установка цвета элемента.
      *
@@ -110,7 +113,7 @@ export function CreateGameField(width, height, manual_walls_installation) {
         Clear: null
     }
 
-    result.Clear = function () {
+    result.Clear = function() {
         result.DrawedElements.forEach(item => {
             var cell_element = item.CellElement;
             html_set_color(cell_element, Constants.CellColors.Void);
@@ -159,14 +162,14 @@ export function CreateGameField(width, height, manual_walls_installation) {
             }
 
             function GetSetColorVoidFunction(current_cell) {
-                return function () {
+                return function() {
                     current_cell.Color = Constants.CellColors.Void;
                     html_set_color(current_cell.CellElement, Constants.CellColors.Void);
                 }
             }
 
             function GetSetColorFillFunction(current_cell) {
-                return function () {
+                return function() {
                     current_cell.Color = Constants.CellColors.Filled;
                     html_set_color(current_cell.CellElement, Constants.CellColors.Filled);
                     result.DrawedElements.push(current_cell);
@@ -174,29 +177,53 @@ export function CreateGameField(width, height, manual_walls_installation) {
             }
 
             function GetSetContentVoidFunction(current_cell) {
-                return function () {
+                return function() {
                     current_cell.Content = Constants.CellContents.Void;
                     html_set_content(current_cell.CellElement, Constants.CellContents.Void);
                 }
             }
 
             function GetSetContentWallFunction(current_cell) {
-                return function () {
+                return function() {
                     current_cell.Content = Constants.CellContents.Wall;
                     html_set_content(current_cell.CellElement, Constants.CellContents.Wall);
                 }
             }
 
+            function GetSetContentFlagFunction(current_cell) {
+                return function() {
+                    current_cell.Content = Constants.CellContents.Flag;
+                    html_set_content(current_cell.CellElement, Constants.CellContents.Flag);
+                }
+            }
+
+            function GetSetContentUsedFlagFunction(current_cell) {
+                return function() {
+                    current_cell.Content = Constants.CellContents.UsedFlag;
+                    html_set_content(current_cell.CellElement, Constants.CellContents.UsedFlag);
+                }
+            }
+
+            function GetSetContentFinishFunction(current_cell) {
+                return function() {
+                    current_cell.Content = Constants.CellContents.Finish;
+                    html_set_content(current_cell.CellElement, Constants.CellContents.Finish);
+                }
+            }
+
             cell.Controls = {
                 SetColorVoid: GetSetColorVoidFunction(cell),
-                SetColorFill:  GetSetColorFillFunction(cell),
-                SetContentVoid:  GetSetContentVoidFunction(cell),
-                SetContentWall:  GetSetContentWallFunction(cell),
+                SetColorFill: GetSetColorFillFunction(cell),
+                SetContentVoid: GetSetContentVoidFunction(cell),
+                SetContentWall: GetSetContentWallFunction(cell),
+                SetContentFlag: GetSetContentFlagFunction(cell),
+                SetContentUsedFlag: GetSetContentUsedFlagFunction(cell),
+                SetContentFinish: GetSetContentFinishFunction(cell),
             };
 
-            if (manual_walls_installation) {
+            if (manual_cells_installation) {
                 function SetWallOnClickFunction(current_cell) {
-                    current_cell.CellElement.onclick = function () {
+                    current_cell.CellElement.onclick = function() {
                         if (current_cell.Content == Constants.CellContents.Void) {
                             current_cell.Controls.SetContentWall();
                         } else {

@@ -12,6 +12,9 @@
  *
  * @property {CellContent} Void Пустая клетка.
  * @property {CellContent} Wall Стена.
+ * @property {CellContent} Flag Флаг.
+ * @property {CellContent} UsedFlag Посещенный флаг.
+ * @property {CellContent} Wall Финальная точка.
  */
 export const CellContents = {
     /**
@@ -23,7 +26,22 @@ export const CellContents = {
      * Стена.
      * @type {CellContent}
      */
-    Wall: { Value: 1, Char: '#' }
+    Wall: { Value: 1, Char: '#' },
+    /**
+     * Флаг.
+     * @type {CellContent}
+     */
+    Flag: { Value: 2, Char: 'F' },
+    /**
+     * Посещенный флаг.
+     * @type {CellContent}
+     */
+    UsedFlag: { Value: 3, Char: '!' },
+    /**
+     * Финальная точка.
+     * @type {CellContent}
+     */
+    Finish: { Value: 4, Char: '*' },
 }
 
 /**

@@ -297,15 +297,15 @@ export function GetHelpAPI() {
  *
  * @param {Number} width Ширина поля в клетках.
  * @param {Number} height Высота поля в клетках.
- * @param {Boolean} manual_walls_installation Можно ли вручную устанавливать стены, кликая по 
+ * @param {Boolean} manual_cells_installation Можно ли вручную устанавливать стены, кликая по 
  * @param {Number} start_pos_x Стартовая позиция робота по X.
  * @param {Number} start_pos_y Стартовая позиция робота по Y.
  * @param {HTMLElement} html_loger Элемент логера.
  * @param {Number} queue_delay Задержка.
  */
-export function CreateFullRobotAPI(width, height, manual_walls_installation, start_pos_x, start_pos_y, html_loger, queue_delay) {
+export function CreateFullRobotAPI(width, height, manual_cells_installation, start_pos_x, start_pos_y, html_loger, queue_delay) {
 
-    var field = FieldAPI.CreateGameField(width, height, manual_walls_installation);
+    var field = FieldAPI.CreateGameField(width, height, manual_cells_installation);
     var robot_controler = RobotControlerAPI.CreateRobotControler(start_pos_x, start_pos_y, field);
     robot_controler.ReDrawField();
     var loger = CommonAPI.CreateLoger(html_loger);
