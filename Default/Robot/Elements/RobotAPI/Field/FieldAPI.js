@@ -40,6 +40,7 @@ import * as Constants from './FieldConstans.js'
  * @property {HTMLElement} FieldElement Элемент поля в DOM-дереве (table).
  * @property {RobotFieldRow[]} Rows Массив строк таблицы поля.
  * @property {RobotFieldCell[]} DrawedElements Закрашенные клетки.
+ * @property {RobotFieldCell[]} FlagsElements Клетки которые нужно посетить.
  * @property {Function} Clear Закрашенные клетки.
  */
 
@@ -107,6 +108,18 @@ export function CreateGameField(width, height, manual_cells_installation) {
         DrawedElements: [],
 
         /**
+         * Клетки которые нужно посетить.
+         * @type {RobotFieldCell[]}
+         */
+        FlagsElements: [],
+
+        /*
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        ДОБАВИТЬ ФЛАГ НАЛИЧИЯ ФИНИША
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        */
+
+        /**
          * Функция очистки цветов поля.
          * @type {Function}
          */
@@ -119,6 +132,12 @@ export function CreateGameField(width, height, manual_cells_installation) {
             html_set_color(cell_element, Constants.CellColors.Void);
         });
         result.DrawedElements = [];
+
+        /*
+        !!!!!!!!!!!!!!!!!!!!!!!
+        ДОБАВИТЬ ОЧИСТКУ ФЛАГОВ
+        !!!!!!!!!!!!!!!!!!!!!!!
+        */
     }
 
     for (var i = 0; i < height; i++) {
@@ -194,6 +213,12 @@ export function CreateGameField(width, height, manual_cells_installation) {
                 return function() {
                     current_cell.Content = Constants.CellContents.Flag;
                     html_set_content(current_cell.CellElement, Constants.CellContents.Flag);
+
+                    /*
+                    !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    ДОБАВИТЬ ДОБАВЛЕНИЕ В СПИСОК
+                    !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    */
                 }
             }
 
@@ -229,6 +254,12 @@ export function CreateGameField(width, height, manual_cells_installation) {
                         } else {
                             current_cell.Controls.SetContentVoid();
                         }
+
+                        /*
+                        !!!!!!!!!!!!!!!!!!!!!
+                        ДОБАВИТЬ ВСЯКИЕ ШТУКИ
+                        !!!!!!!!!!!!!!!!!!!!!
+                        */
                     }
                 }
 

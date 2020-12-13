@@ -388,6 +388,13 @@ export function CreateFullRobotAPI(width, height, manual_cells_installation, sta
                 alert('Некорректный код!')
             }
         },
+
+        /*
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        ДОБАВИТЬ ПРОВЕРКУ КОРРЕКТНОСТИ ВЫПОЛНЕНИЯ
+        (ФЛАГИ, ФИНИШ)
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        */
     };
 
     return instance;

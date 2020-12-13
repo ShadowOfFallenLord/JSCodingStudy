@@ -46,7 +46,7 @@ export function CreateRobotControler(x, y, field) {
          * Перемещение робота на 1 клетку
          * @param {RobotConstants.Direction} direction Направление
          */
-        Move: function (direction) {
+        Move: function(direction) {
             if (robot_instance.Destroed) return;
 
             var x = robot_instance.X + direction.Offset.X;
@@ -59,6 +59,12 @@ export function CreateRobotControler(x, y, field) {
                 return;
             }
 
+            /*
+            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            ДОБАВИТЬ ВЗАИМОДЕЙСТВИЕ С ФЛАГОМ
+            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            */
+
             robot_instance.X += direction.Offset.X;
             robot_instance.Y += direction.Offset.Y;
         },
@@ -68,7 +74,7 @@ export function CreateRobotControler(x, y, field) {
          * @param {RobotConstants.Direction} direction Направление
          * @param {RobotConstants.CheckVariant} variant Что проверяем 
          */
-        Check: function (direction, variant) {
+        Check: function(direction, variant) {
             if (robot_instance.Destroed) return;
 
             var x = robot_instance.X + direction.Offset.X;
@@ -100,7 +106,7 @@ export function CreateRobotControler(x, y, field) {
         /**
          * Закрасить клетку
          */
-        Draw: function () {
+        Draw: function() {
             if (robot_instance.Destroed) return;
 
             var cell = field.Rows[robot_instance.Y].Columns[robot_instance.X];
@@ -110,7 +116,7 @@ export function CreateRobotControler(x, y, field) {
         /**
          * Перерисовать поле
          */
-        ReDrawField: function () {
+        ReDrawField: function() {
             var cell = field.Rows[robot_instance.Y].Columns[robot_instance.X];
             var old_cell = field.Rows[robot_instance.OldY].Columns[robot_instance.OldX];
 
