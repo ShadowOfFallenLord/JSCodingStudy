@@ -41,6 +41,7 @@ import * as Constants from './FieldConstans.js'
  * @property {RobotFieldRow[]} Rows Массив строк таблицы поля.
  * @property {RobotFieldCell[]} DrawedElements Закрашенные клетки.
  * @property {RobotFieldCell[]} FlagsElements Клетки которые нужно посетить.
+ * @property {Boolean} HasFinish Есть ли финиш.
  * @property {Function} Clear Закрашенные клетки.
  */
 
@@ -113,11 +114,11 @@ export function CreateGameField(width, height, manual_cells_installation) {
          */
         FlagsElements: [],
 
-        /*
-        !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        ДОБАВИТЬ ФЛАГ НАЛИЧИЯ ФИНИША
-        !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        */
+        /**
+         * Есть ли финиш.
+         * @type {Boolean}
+         */
+        HasFinish: false,
 
         /**
          * Функция очистки цветов поля.
@@ -231,6 +232,11 @@ export function CreateGameField(width, height, manual_cells_installation) {
 
             function GetSetContentFinishFunction(current_cell) {
                 return function() {
+                    if (result.HasFinish) {
+                        throw 'Может быть только 1 финиш.'
+                    }
+
+                    result.HasFinish = true;
                     current_cell.Content = Constants.CellContents.Finish;
                     html_set_content(current_cell.CellElement, Constants.CellContents.Finish);
                 }
@@ -249,17 +255,27 @@ export function CreateGameField(width, height, manual_cells_installation) {
             if (manual_cells_installation) {
                 function SetWallOnClickFunction(current_cell) {
                     current_cell.CellElement.onclick = function() {
-                        if (current_cell.Content == Constants.CellContents.Void) {
-                            current_cell.Controls.SetContentWall();
-                        } else {
-                            current_cell.Controls.SetContentVoid();
+                        console.log("aaa");
+                        switch (current_cell.Content.Value) {
+                            case Constants.CellContents.Void.Value:
+                                current_cell.Controls.SetContentWall();
+                                break;
+                            case Constants.CellContents.Wall.Value:
+                                current_cell.Controls.SetContentFlag();
+                                break;
+                            case Constants.CellContents.Flag.Value:
+                            case Constants.CellContents.UsedFlag.Value:
+                                if (result.HasFinish) {
+                                    current_cell.Controls.SetContentVoid();
+                                } else {
+                                    current_cell.Controls.SetContentFinish();
+                                }
+                                break;
+                            case Constants.CellContents.Finish.Value:
+                                result.HasFinish = false;
+                                current_cell.Controls.SetContentVoid();
+                                break;
                         }
-
-                        /*
-                        !!!!!!!!!!!!!!!!!!!!!
-                        ДОБАВИТЬ ВСЯКИЕ ШТУКИ
-                        !!!!!!!!!!!!!!!!!!!!!
-                        */
                     }
                 }
 
