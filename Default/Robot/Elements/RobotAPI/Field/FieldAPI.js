@@ -251,7 +251,6 @@ export function CreateGameField(width, height, manual_cells_installation) {
             if (manual_cells_installation) {
                 function SetWallOnClickFunction(current_cell) {
                     current_cell.CellElement.onclick = function() {
-                        console.log("aaa");
                         switch (current_cell.Content.Value) {
                             case Constants.CellContents.Void.Value:
                                 current_cell.Controls.SetContentWall();
@@ -266,7 +265,7 @@ export function CreateGameField(width, height, manual_cells_installation) {
                                 {
                                     if(result.FlagsElements[i].CellId == current_cell.CellId)
                                     {
-                                        cur_cell_index = i;
+                                        cur_cell_index = i - 0;
                                         break;
                                     }
                                 }
@@ -276,7 +275,11 @@ export function CreateGameField(width, height, manual_cells_installation) {
                                     throw 'Не получается удалить флаг';
                                 }
 
-                                result.FlagsElements.slice(cur_cell_index, 1);
+                                for(var i = cur_cell_index + 1; i < result.FlagsElements.length; i++)
+                                {
+                                    result.FlagsElements[i - 1] = result.FlagsElements[i];
+                                }
+                                result.FlagsElements.length--;
 
                                 if (result.HasFinish) {
                                     current_cell.Controls.SetContentVoid();
