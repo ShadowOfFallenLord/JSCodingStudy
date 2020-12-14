@@ -215,12 +215,7 @@ export function CreateGameField(width, height, manual_cells_installation) {
                 return function() {
                     current_cell.Content = Constants.CellContents.Flag;
                     html_set_content(current_cell.CellElement, Constants.CellContents.Flag);
-
-                    /*
-                    !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    ДОБАВИТЬ ДОБАВЛЕНИЕ В СПИСОК
-                    !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    */
+                    result.FlagsElements.push(current_cell);
                 }
             }
 
@@ -266,6 +261,23 @@ export function CreateGameField(width, height, manual_cells_installation) {
                                 break;
                             case Constants.CellContents.Flag.Value:
                             case Constants.CellContents.UsedFlag.Value:
+                                var cur_cell_index = -1;
+                                for(var i in result.FlagsElements)
+                                {
+                                    if(result.FlagsElements[i].CellId == current_cell.CellId)
+                                    {
+                                        cur_cell_index = i;
+                                        break;
+                                    }
+                                }
+
+                                if(cur_cell_index < 0)
+                                {
+                                    throw 'Не получается удалить флаг';
+                                }
+
+                                result.FlagsElements.slice(cur_cell_index, 1);
+
                                 if (result.HasFinish) {
                                     current_cell.Controls.SetContentVoid();
                                 } else {
