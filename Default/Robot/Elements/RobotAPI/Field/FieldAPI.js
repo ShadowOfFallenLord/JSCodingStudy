@@ -135,11 +135,10 @@ export function CreateGameField(width, height, manual_cells_installation) {
         });
         result.DrawedElements = [];
 
-        /*
-        !!!!!!!!!!!!!!!!!!!!!!!
-        ДОБАВИТЬ ОЧИСТКУ ФЛАГОВ
-        !!!!!!!!!!!!!!!!!!!!!!!
-        */
+        result.FlagsElements.forEach(item => {
+            var cell_element = item.CellElement;
+            html_set_content(cell_element, Constants.CellContents.Flag);
+        });
     }
 
     for (var i = 0; i < height; i++) {
