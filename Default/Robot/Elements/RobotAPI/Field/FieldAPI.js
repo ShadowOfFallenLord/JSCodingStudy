@@ -16,7 +16,8 @@ import * as Constants from './FieldConstans.js'
 /**
  * Клетка поля.
  * @typedef {Object} RobotFieldCell
- *
+ * 
+ * @property {Number} CellId Id клетки
  * @property {HTMLElement} CellElement Элемент клетки в DOM-дереве (td).
  * @property {Constants.CellContent} Content Сожержимое.
  * @property {Constants.CellColor} Color Цвет.
@@ -175,6 +176,7 @@ export function CreateGameField(width, height, manual_cells_installation) {
              * @type {RobotFieldCell}
              */
             var cell = {
+                CellId: y * width + x,
                 CellElement: html_element,
                 Content: Constants.CellContents.Void,
                 Color: Constants.CellColors.Void,
