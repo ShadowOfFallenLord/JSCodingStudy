@@ -373,6 +373,37 @@ export function CreateFullRobotAPI(width, height, manual_cells_installation, sta
         loger.Clear();
     }
 
+    function check_correct_execute() {
+        if (robot_controler.Robot.Destroed) {
+            return false;
+        }
+
+        if (field.HasFinish) {
+            var cell = field.Rows[robot_controler.Robot.Y].Columns[robot_controler.Robot.X]
+            if (cell.Content != FieldConstants.CellContents.Finish) {
+                return false;
+            }
+        }
+
+        for(var i in field.FlagsElements)
+        {
+            if(field.FlagsElements[i].Content != FieldConstants.CellContents.UsedFlag)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    function print_result(flag) {
+        if (flag) {
+            alert('+');
+        } else {
+            alert('-');
+        }
+    }
+
     var instance = {
         Field: field,
         Reset: reset_robot_state,
@@ -381,6 +412,7 @@ export function CreateFullRobotAPI(width, height, manual_cells_installation, sta
                 reset_robot_state();
                 var f = new Function('Robot', 'Directions', 'Checks', code);
                 f(queue_controler, RobotConstants.Directions, RobotConstants.CheckVariants);
+                queue.Add(() => print_result(check_correct_execute()));
                 reset_robot_state();
                 queue.Execute();
                 queue.Clear();
@@ -388,13 +420,6 @@ export function CreateFullRobotAPI(width, height, manual_cells_installation, sta
                 alert('Некорректный код!')
             }
         },
-
-        /*
-        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        ДОБАВИТЬ ПРОВЕРКУ КОРРЕКТНОСТИ ВЫПОЛНЕНИЯ
-        (ФЛАГИ, ФИНИШ)
-        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        */
     };
 
     return instance;

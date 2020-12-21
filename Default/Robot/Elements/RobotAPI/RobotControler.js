@@ -54,19 +54,26 @@ export function CreateRobotControler(x, y, field) {
 
             var is_in_field = check_in_in_field(x, y);
 
-            if (!is_in_field || field.Rows[y].Columns[x].Content.Value == FieldConstants.CellContents.Wall.Value) {
+            if (!is_in_field) {
                 robot_instance.Destroed = true;
                 return;
             }
 
-            /*
-            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            ДОБАВИТЬ ВЗАИМОДЕЙСТВИЕ С ФЛАГОМ
-            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            */
+            var cell = field.Rows[y].Columns[x];
 
-            robot_instance.X += direction.Offset.X;
-            robot_instance.Y += direction.Offset.Y;
+            if(cell.Content.Value == FieldConstants.CellContents.Wall.Value)
+            {
+                robot_instance.Destroed = true;
+                return;
+            }
+
+            if(cell.Content.Value == FieldConstants.CellContents.Flag.Value)
+            {
+                cell.Controls.SetContentUsedFlag();
+            }
+
+            robot_instance.X = x;
+            robot_instance.Y = y;
         },
 
         /**
