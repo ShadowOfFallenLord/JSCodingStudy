@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="utf-8">
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">-->
+        <title>Example</title>
+    </head>
+
+    <body>
+        <link rel="stylesheet" href="../Elements/Styles/PageStyles.css" type="text/css" />
+        <table cellpadding="10px" cellspacing="0" align="center" class="main_container">
+            <tr align="center" class="display_container">
+                <td align="center" class="half_display">
+                    <div id="robot_display">
+                        display
+                    </div>
+                </td>
+                <td align="left" class="log_container">
+                    Действия:
+                    <textarea id="log_display" readonly="true" class="log_element"></textarea>
+                </td>
+                <td align="left" class="task_container">
+                    Задание:
+                    <div id="task_display" class="task_element">
+                        Начнем с передвижения. 
+                        <br>
+                        Для этого используется команда Robot.Move с аргументом, обозначающим направление. Подробнее можно узнать нажав на кнопку help.
+                        <br>
+                        Нужно поднять 3 флага (F) и закончить в клетке финиша (*).
+                        <br>
+                        Для этого нужно дважды передвинуть робота вверх, дважды вправо, дважды вниз и один раз вправо.
+                    </div>
+                </td>
+            </tr align="center">
+            <tr align="center" class="control_container">
+                <td class="half_display">
+                    Код:
+                    <textarea id="code_input" class="code_container"></textarea>
+                </td>
+                <td colspan="2">
+                    <input type="button" id="run_button" value="Run">
+                    <input type="button" id="clear_button" value="Clear">
+                    <input type="button" id="help_button" value="Help">
+                </td>
+            </tr>
+        </table>
+
+        <div id="help_container" class="help_container" style="display: none;">
+            <input type="button" id="close_help_button" value="X">
+            <ul id="help_text" style="padding: 5px;">
+                Справка по командам
+            </ul>
+        </div>
+
+        <!-- Открытие/закрытие окошка помощи -->
+        <script type="module">
+                var HelpContainer = document.getElementById('help_container');
+
+                document.getElementById('close_help_button').onclick = function() {
+                    HelpContainer.style.display = "none";
+                };
+
+                document.getElementById('help_button').onclick = function() {
+                    HelpContainer.style.display = "block";
+
+                    var screen_width = document.documentElement.clientWidth;
+                    var screen_heigth = document.documentElement.clientHeight;
+
+                    var element_width = HelpContainer.offsetWidth;
+                    var element_heigth = HelpContainer.offsetHeight;
+
+                    HelpContainer.style.left = ((screen_width / 2) - (element_width / 2)) + "px";
+                    HelpContainer.style.top = ((screen_heigth / 2) - (element_heigth / 2)) + "px";
+                };
+
+                import * as RAPI from "../Elements/RobotAPI/GeneralRobotAPI.js"; 
+                var help = RAPI.GetHelpAPI();
+                var help_test = document.getElementById('help_text');
+                var help_node = help.ParseHelp(help.GetHelp(true, false, false));
+                help_test.append(help_node);
+        </script>
+
+        <script>
+            /**
+             * Базовые элеметы.
+             * @typedef {Object} HtmlButtonsElements
+             *
+             * @property {HTMLElement} RunButton Кнопка запуска.
+             * @property {HTMLElement} ClearButton Кнопка сброса.
+             */
+
+            /**
+             * Базовые элеметы.
+             * @typedef {Object} HtmlElements
+             *
+             * @property {HTMLElement} RobotDisplay Контейнер экрана робота.
+             * @property {HTMLElement} TextInput Элемент ввода кода.
+             * @property {HTMLElement} LogDisplay Элемент с логом.
+             * @property {HtmlButtonsElements} Buttons Кнопки.
+             */
+
+            /**
+             * Элементы документа.
+             * @type {HtmlElements}
+             */
+            var html_elements = {
+                RobotDisplay: document.getElementById('robot_display'),
+                TextInput: document.getElementById('code_input'),
+                LogDisplay: document.getElementById('log_display'),
+                Buttons: {
+                    RunButton: document.getElementById('run_button'),
+                    ClearButton: document.getElementById('clear_button'),
+                }
+            }
+        </script>
+
+        <script type="module">
+            var pattern = [
+                '.....',
+                '.F.F.',
+                '.....',
+                '..*F.',
+                '.....',
+            ] 
+
+            import * as RAPI from "../Elements/RobotAPI/GeneralRobotAPI.js"; 
+            var RobotAPI = RAPI.CreateFullRobotAPIWithPattern(pattern, 1, 3, html_elements.LogDisplay, 100); 
+            html_elements.RobotDisplay.innerHTML = ''; 
+            html_elements.RobotDisplay.append(RobotAPI.Field.FieldElement);
+
+            html_elements.Buttons.ClearButton.onclick = RobotAPI.Reset;
+            html_elements.Buttons.RunButton.onclick = function() {
+                var code = html_elements.TextInput.value;
+                RobotAPI.Execute(code);                
+            };
+        </script>
+
+        <script>
+            html_elements.TextInput.innerHTML = `Robot.Move(Directions.Up);
+Robot.Move(Directions.Up);
+Robot.Move(Directions.Right);
+Robot.Move(Directions.Right);
+Robot.Move(Directions.Down);
+Robot.Move(Directions.Down);
+Robot.Move(Directions.Left);`
+        </script>
+    </body>
+
+</html>
