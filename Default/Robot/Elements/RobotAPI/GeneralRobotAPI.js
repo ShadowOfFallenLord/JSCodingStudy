@@ -385,10 +385,8 @@ export function CreateFullRobotAPI(width, height, manual_cells_installation, sta
             }
         }
 
-        for(var i in field.FlagsElements)
-        {
-            if(field.FlagsElements[i].Content != FieldConstants.CellContents.UsedFlag)
-            {
+        for (var i in field.FlagsElements) {
+            if (field.FlagsElements[i].Content != FieldConstants.CellContents.UsedFlag) {
                 return 'Неудача. Робот посетил не все обязательные точки.';
             }
         }
@@ -415,4 +413,44 @@ export function CreateFullRobotAPI(width, height, manual_cells_installation, sta
     };
 
     return instance;
+}
+
+/**
+ * Создание API для робота c некоторым начальным полем.
+ *
+ * @param {String[]} pattern Строки для поля. 
+ * @param {Number} start_pos_x Стартовая позиция робота по X.
+ * @param {Number} start_pos_y Стартовая позиция робота по Y.
+ * @param {HTMLElement} html_loger Элемент логера.
+ * @param {Number} queue_delay Задержка.
+ */
+export function CreateFullRobotAPIWithPattern(pattern, start_pos_x, start_pos_y, html_loger, queue_delay) {
+    var height = pattern.length;
+    var width = pattern[0].length;
+
+    var api = CreateFullRobotAPI(width, height, false, start_pos_x, start_pos_y, html_loger, queue_delay);
+
+    for (var y = 0; y < height; y++) {
+        for (var x = 0; x < width; x++) {
+            var cell = api.Field.Rows[y].Columns[x];
+            switch (pattern[y][x]) {
+                case '.':
+                    cell.Controls.SetContentVoid();
+                    break;
+                case '#':
+                    cell.Controls.SetContentWall();
+                    break;
+                case 'F':
+                    cell.Controls.SetContentFlag();
+                    break;
+                case '*':
+                    cell.Controls.SetContentFinish();
+                    break;
+            }
+        }
+    }
+
+    api.Reset();
+
+    return api;
 }

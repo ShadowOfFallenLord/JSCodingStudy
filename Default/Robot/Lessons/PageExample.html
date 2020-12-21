@@ -110,8 +110,21 @@
         </script>
 
         <script type="module">
+            var pattern = [
+                '..........',
+                '......*...',
+                '......F...',
+                '......F...',
+                '.....#....',
+                '..........',
+                '..........',
+                '..........',
+                '..........',
+                '..........',
+            ] 
+
             import * as RAPI from "../Elements/RobotAPI/GeneralRobotAPI.js"; 
-            var RobotAPI = RAPI.CreateFullRobotAPI(10, 10, true, 5, 5, html_elements.LogDisplay, 100); 
+            var RobotAPI = RAPI.CreateFullRobotAPIWithPattern(pattern, 5, 7, html_elements.LogDisplay, 100); 
             html_elements.RobotDisplay.innerHTML = ''; 
             html_elements.RobotDisplay.append(RobotAPI.Field.FieldElement);
 
