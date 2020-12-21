@@ -375,13 +375,13 @@ export function CreateFullRobotAPI(width, height, manual_cells_installation, sta
 
     function check_correct_execute() {
         if (robot_controler.Robot.Destroed) {
-            return false;
+            return 'Неудача. Робот был уничтожен.';
         }
 
         if (field.HasFinish) {
             var cell = field.Rows[robot_controler.Robot.Y].Columns[robot_controler.Robot.X]
             if (cell.Content != FieldConstants.CellContents.Finish) {
-                return false;
+                return 'Неудача. Робот закончил свое передвижение не на финише.';
             }
         }
 
@@ -389,19 +389,11 @@ export function CreateFullRobotAPI(width, height, manual_cells_installation, sta
         {
             if(field.FlagsElements[i].Content != FieldConstants.CellContents.UsedFlag)
             {
-                return false;
+                return 'Неудача. Робот посетил не все обязательные точки.';
             }
         }
 
-        return true;
-    }
-
-    function print_result(flag) {
-        if (flag) {
-            alert('+');
-        } else {
-            alert('-');
-        }
+        return 'Удачно!';
     }
 
     var instance = {
@@ -412,7 +404,7 @@ export function CreateFullRobotAPI(width, height, manual_cells_installation, sta
                 reset_robot_state();
                 var f = new Function('Robot', 'Directions', 'Checks', code);
                 f(queue_controler, RobotConstants.Directions, RobotConstants.CheckVariants);
-                queue.Add(() => print_result(check_correct_execute()));
+                queue.Add(() => alert(check_correct_execute()));
                 reset_robot_state();
                 queue.Execute();
                 queue.Clear();
