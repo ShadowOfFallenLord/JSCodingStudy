@@ -1,0 +1,28 @@
+﻿@model IEnumerable<LessonInfo>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @Html.ActionLink("- Sandbox", "Sandbox", "Lesson")
+        <br />
+        @foreach (LessonInfo info in Model)
+        {
+            string title = $"- Lesson {info.Id} - {info.Title}";
+            @Html.ActionLink(title, "Lesson", "Lesson", new { id = info.Id }, null)
+            <br />
+        }
+
+        <br />
+        @Html.ActionLink("- Back", "Index", "Home", new { area = "" }, null)
+    </div>
+</body>
+</html>
