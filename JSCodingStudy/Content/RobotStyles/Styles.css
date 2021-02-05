@@ -29,3 +29,7 @@ textarea.form-control {
 .borders {
     border: 1px solid #ccc
 }
+
+.borders_inside * {
+    border: 1px solid #ccc
+}

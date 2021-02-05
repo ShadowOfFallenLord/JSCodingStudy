@@ -31,8 +31,12 @@
 </div>
 <div class="row align-items-center borders" id="page_bottom_row">
     <div class="col-lg-5 full_height borders">
-        Код:
-        <textarea id="code_input" class="form-control text-left" rows="2"></textarea>
+        <div class="borders">
+            Код:
+        </div>
+        <div class="borders full_height">
+            <textarea id="code_input" class="form-control text-left" rows="2"></textarea>
+        </div>
     </div>
     <div class="col-lg-7 full_height text-center button_container borders">
         <input type="button" id="run_button" value="Запуск" class="btn btn-primary">
@@ -42,7 +46,7 @@
     </div>
 </div>
 
-<div id="help_container" class="help_container" style="display: none;">
+<div id="help_container" class="help_container borders_inside" style="display: none;">
     <input type="button" id="close_help_button" value="X">
     <ul id="help_text" style="padding: 5px;">
         Справка по командам
