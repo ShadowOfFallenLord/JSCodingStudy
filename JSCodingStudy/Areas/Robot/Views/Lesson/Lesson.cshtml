@@ -3,8 +3,12 @@
     ViewBag.Title = Model.Title;
 }
 
+@functions {
+    public string ToJSBool(bool val) => val.ToString().ToLower();
+}
+
 @section task {
-    @foreach(string s in @Model.Task.Split('\n'))
+    @foreach (string s in @Model.Task.Split('\n'))
     {
         @s
         <br />
@@ -12,15 +16,15 @@
 }
 
 @section help {
-    var help_node = help.ParseHelp(help.GetHelp(@Model.APIHelp.Move, @Model.APIHelp.Check, @Model.APIHelp.Draw));
+    var help_node = help.ParseHelp(help.GetHelp(@ToJSBool(Model.APIHelp.Move), @ToJSBool(Model.APIHelp.Check), @ToJSBool(Model.APIHelp.Draw)));
 }
 
 @section field_init {
     var pattern = [
-        @foreach (string line in Model.Pattern)
-        {
-            @:'@line',
-        }
+    @foreach (string line in Model.Pattern)
+    {
+        @:'@line',
+    }
     ]
     var RobotAPI = RAPI.CreateFullRobotAPIWithPattern(pattern, @Model.StartX, @Model.StartY, html_elements.LogDisplay, 100);
 }
