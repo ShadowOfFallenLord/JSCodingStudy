@@ -5,14 +5,14 @@
 }
 
 
-@Html.ActionLink("- Sandbox", "Sandbox", "Lesson")
+@Html.ActionLink("- Песочница", "Sandbox", "Lesson", null, new { @class = "btn btn-light" })
 <br />
 @foreach (LessonInfo info in Model)
 {
-    string title = $"- Lesson {info.Id} - {info.Title}";
-    @Html.ActionLink(title, "Lesson", "Lesson", new { id = info.Id }, null)
+    string title = $"- Урок {info.Id + 1} - {info.Title}";
+    @Html.ActionLink(title, "Lesson", "Lesson", new { id = info.Id }, new { @class = "btn btn-light" })
     <br />
 }
 
 <br />
-@Html.ActionLink("- Back", "Index", "Home", new { area = "" }, null)
+@Html.ActionLink("- Back", "Index", "Home", new { area = "" }, new { @class = "btn btn-light" })
