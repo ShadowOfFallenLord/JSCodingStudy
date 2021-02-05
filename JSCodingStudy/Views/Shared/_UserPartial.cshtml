@@ -1,0 +1,15 @@
+﻿<h4 class="text-warning">
+    Hello,
+    @if (User.Identity.IsAuthenticated)
+    {
+        @User.Identity.Name@:!
+        @Html.ActionLink("Logout", "Logout", "AppUser", null, new { @class = "text-primary" })
+    }
+    else
+    {
+        @:Guest!
+        @Html.ActionLink("Login", "Login", "AppUser", null, new { @class = "text-primary" })
+        @:or
+        @Html.ActionLink("Register", "Register", "AppUser", null, new { @class = "text-primary" })
+    }
+</h4>

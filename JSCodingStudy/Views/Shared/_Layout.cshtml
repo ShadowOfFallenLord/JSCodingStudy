@@ -19,9 +19,7 @@
                     @Html.ActionLink("JSCodingStudy", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 </div>
                 <div class="col-lg-5 text-right">
-                    <h4 class="text-warning">
-                        Механизм юзеров
-                    </h4>
+                    @Html.Partial("_UserPartial")
                 </div>
                 <div class="col-lg-1"></div>
             </div>

@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace JSCodingStudy.Areas.Robot.Controllers
 {
+    [Authorize]
     public class MenuController : Controller
     {
         // GET: Robot/Menu
