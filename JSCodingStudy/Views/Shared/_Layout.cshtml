@@ -38,6 +38,19 @@
         </footer>
     </div>
 
+    <script>
+        (function () {
+            (function () {
+                var body = $('body');
+                var navbar = $('.navbar');
+                var footer = $('footer');
+                var height = body.height() - navbar.height() - footer.height();
+
+                $('#main_page_container').height(height);
+            })();
+        })();
+    </script>
+
     @RenderSection("size_scripts", required: false);
 </body>
 </html>

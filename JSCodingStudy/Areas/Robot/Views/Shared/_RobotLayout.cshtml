@@ -173,21 +173,11 @@ else
 @section size_scripts {
     <script>
         (function () {
+            var height = $('#main_page_container').height();
+            var hp = height / 3;
 
-            var top_row = $('#page_top_row');
-            var bottom_row = $('#page_bottom_row');
-
-            (function () {
-                var body = $('body');
-                var navbar = $('.navbar');
-                var footer = $('footer');
-                var height = body.height() - navbar.height() - footer.height();
-
-                var hp = height / 3;
-
-                top_row.height(hp * 2);
-                bottom_row.height(hp);
-            })();
+            $('#page_top_row').height(hp * 2);
+            $('#page_bottom_row').height(hp);
         })();
     </script>
 }
