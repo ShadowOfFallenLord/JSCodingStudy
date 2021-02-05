@@ -11,7 +11,7 @@
     <div>
         <label>Логин</label>
         @Html.EditorFor(model => model.Login)
-        @Html.ValidationMessageFor(model => model.Login)
+        @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
     </div>
     <div>
         <label>Пароль</label>
