@@ -9,6 +9,8 @@
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
 </head>
 <body>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -17,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("JSCodingStudy", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -27,14 +29,26 @@
     </div>
 
     <div class="container body-content">
+        <div class="row">
+            <div class="col-lg-1">
+                aaa
+            </div>
+            <div class="col-lg-5 text-left">
+                aaa
+            </div>
+            <div class="col-lg-5 text-right"s>
+                aaa
+            </div>
+            <div class="col-lg-1">
+                aaa
+            </div>
+        </div>
+
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; Алексей Петров, 2020-2021</p>
         </footer>
     </div>
-
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>
