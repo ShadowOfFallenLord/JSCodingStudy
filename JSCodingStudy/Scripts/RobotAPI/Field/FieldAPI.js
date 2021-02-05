@@ -165,7 +165,7 @@ export function CreateGameField(width, height, manual_cells_installation) {
         var row_array = result.Rows[y].Columns;
         for (var x = 0; x < width; x++) {
             var html_element = document.createElement('td');
-            html_element.setAttribute('width', '19px')
+            html_element.setAttribute('width', '31px')
             html_set_content(html_element, Constants.CellContents.Void);
             html_set_color(html_element, Constants.CellColors.Void);
             row_parrent.append(html_element);
