@@ -1,0 +1,147 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/RobotStyles/Styles.css" type="text/css" />
+<table cellpadding="10px" cellspacing="0" align="center" class="main_container">
+    <tr align="center" class="display_container">
+        <td align="center" class="half_display">
+            <div id="robot_display">
+                display
+            </div>
+        </td>
+        <td align="left" class="log_container">
+            Действия:
+            <textarea id="log_display" readonly="true" class="log_element"></textarea>
+        </td>
+        <td align="left" class="task_container">
+            Задание:
+            <div id="task_display" class="task_element">
+                @RenderSection("task", required: true)
+            </div>
+        </td>
+    </tr>
+    <tr align="center" class="control_container">
+        <td class="half_display">
+            Код:
+            <textarea id="code_input" class="code_container"></textarea>
+        </td>
+        <td colspan="2">
+            <input type="button" id="run_button" value="Запуск">
+            <input type="button" id="clear_button" value="Сброс">
+            <input type="button" id="help_button" value="Помощь">
+            @Html.ActionLink("Назад", "Index", "Menu")
+        </td>
+    </tr>
+</table>
+
+<div id="help_container" class="help_container" style="display: none;">
+    <input type="button" id="close_help_button" value="X">
+    <ul id="help_text" style="padding: 5px;">
+        Справка по командам
+    </ul>
+</div>
+
+<!-- Открытие/закрытие окошка помощи -->
+<script type="module">
+    var HelpContainer = document.getElementById('help_container');
+
+    document.getElementById('close_help_button').onclick = function() {
+        HelpContainer.style.display = "none";
+    };
+
+    document.getElementById('help_button').onclick = function() {
+        HelpContainer.style.display = "block";
+
+        var screen_width = document.documentElement.clientWidth;
+        var screen_heigth = document.documentElement.clientHeight;
+
+        var element_width = HelpContainer.offsetWidth;
+        var element_heigth = HelpContainer.offsetHeight;
+
+        HelpContainer.style.left = ((screen_width / 2) - (element_width / 2)) + "px";
+        HelpContainer.style.top = ((screen_heigth / 2) - (element_heigth / 2)) + "px";
+    };
+
+    import * as RAPI from "@Url.Content("~/Scripts/RobotAPI/GeneralRobotAPI.js")";
+    var help = RAPI.GetHelpAPI();
+    var help_test = document.getElementById('help_text');
+
+    @if (IsSectionDefined("help"))
+    {
+        @RenderSection("help")
+    }
+    else
+    {
+        @:var help_node = help.ParseHelp(help.GetHelp(true, true, true));
+    }
+    help_test.append(help_node);
+</script>
+
+<script>
+    /**
+     * Базовые элеметы.
+     * @@typedef {Object} HtmlButtonsElements
+     *
+     * @@property {HTMLElement} RunButton Кнопка запуска.
+     * @@property {HTMLElement} ClearButton Кнопка сброса.
+     */
+
+    /**
+     * Базовые элеметы.
+     * @@typedef {Object} HtmlElements
+     *
+     * @@property {HTMLElement} RobotDisplay Контейнер экрана робота.
+     * @@property {HTMLElement} TextInput Элемент ввода кода.
+     * @@property {HTMLElement} LogDisplay Элемент с логом.
+     * @@property {HtmlButtonsElements} Buttons Кнопки.
+     */
+
+    /**
+     * Элементы документа.
+     * @@type {HtmlElements}
+     */
+    var html_elements = {
+        RobotDisplay: document.getElementById('robot_display'),
+        TextInput: document.getElementById('code_input'),
+        LogDisplay: document.getElementById('log_display'),
+        Buttons: {
+            RunButton: document.getElementById('run_button'),
+            ClearButton: document.getElementById('clear_button'),
+        }
+    }
+</script>
+
+<script type="module">
+    import * as RAPI from "@Url.Content("~/Scripts/RobotAPI/GeneralRobotAPI.js")";
+
+    @if (IsSectionDefined("field_init"))
+    {
+        @RenderSection("field_init")
+    }
+    else
+    {
+        @:var RobotAPI = RAPI.CreateFullRobotAPI(10, 10, true, 5, 5, html_elements.LogDisplay, 100);
+    }   
+    
+    html_elements.RobotDisplay.innerHTML = '';
+    html_elements.RobotDisplay.append(RobotAPI.Field.FieldElement);
+
+    html_elements.Buttons.ClearButton.onclick = RobotAPI.Reset;
+    html_elements.Buttons.RunButton.onclick = function() {
+        var code = html_elements.TextInput.value;
+        RobotAPI.Execute(code);
+    };
+</script>
+
+
+    @if (IsSectionDefined("user_code"))
+    {
+        @RenderSection("user_code")
+    }
+    else
+    {
+        <script>
+            html_elements.TextInput.innerHTML = ''
+        </script>
+    }
