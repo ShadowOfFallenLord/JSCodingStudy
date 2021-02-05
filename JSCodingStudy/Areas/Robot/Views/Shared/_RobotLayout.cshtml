@@ -142,7 +142,19 @@
     html_elements.Buttons.ClearButton.onclick = RobotAPI.Reset;
     html_elements.Buttons.RunButton.onclick = function() {
         var code = html_elements.TextInput.value;
-        RobotAPI.Execute(code);
+
+        function additional_result_check() {
+            var res_int = RobotAPI.CheckResults();
+            var res_str = RobotAPI.GetResultString(res_int);
+
+            if (res_int == 0) {
+                // Место для отправки успешного кода на сервер
+            }
+
+            alert(res_str);
+        }
+
+        RobotAPI.Execute(code, additional_result_check);
     };
 </script>
 

@@ -373,36 +373,53 @@ export function CreateFullRobotAPI(width, height, manual_cells_installation, sta
         loger.Clear();
     }
 
-    function check_correct_execute() {
+    function check_execute_result() {
         if (robot_controler.Robot.Destroed) {
-            return 'Неудача. Робот был уничтожен.';
+            return 1;
         }
 
         if (field.HasFinish) {
             var cell = field.Rows[robot_controler.Robot.Y].Columns[robot_controler.Robot.X]
             if (cell.Content != FieldConstants.CellContents.Finish) {
-                return 'Неудача. Робот закончил свое передвижение не на финише.';
+                return 2;
             }
         }
 
         for (var i in field.FlagsElements) {
             if (field.FlagsElements[i].Content != FieldConstants.CellContents.UsedFlag) {
-                return 'Неудача. Робот посетил не все обязательные точки.';
+                return 3;
             }
         }
 
-        return 'Удачно!';
+        return 0;
+    }
+
+    function get_check_correct_execute_string(res) {
+
+        switch (res) {
+            case 0: return 'Удачно!';
+            case 1: return 'Неудача. Робот был уничтожен.';
+            case 2: return 'Неудача. Робот закончил свое передвижение не на финише.';
+            case 3: return 'Неудача. Робот посетил не все обязательные точки.';
+        }
+        return 'Error!';
+    }
+
+    function check_correct_execute() {
+        var res_int = check_execute_result();
+        var res_str = get_check_correct_execute_string(res_int);
+        alert(res_str);
     }
 
     var instance = {
         Field: field,
         Reset: reset_robot_state,
-        Execute: function(code) {
+        Execute: function (code, check_result_correct = check_correct_execute) {
             try {
                 reset_robot_state();
                 var f = new Function('Robot', 'Directions', 'Checks', code);
                 f(queue_controler, RobotConstants.Directions, RobotConstants.CheckVariants);
-                queue.Add(() => alert(check_correct_execute()));
+                queue.Add(check_result_correct);
                 reset_robot_state();
                 queue.Execute();
                 queue.Clear();
@@ -410,6 +427,9 @@ export function CreateFullRobotAPI(width, height, manual_cells_installation, sta
                 alert('Некорректный код!')
             }
         },
+        CheckResults: check_execute_result,
+        GetResultString: get_check_correct_execute_string,
+        DefoultCheckCorrectExecute: check_correct_execute
     };
 
     return instance;
