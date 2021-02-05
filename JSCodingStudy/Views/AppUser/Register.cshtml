@@ -1,24 +1,24 @@
 ﻿@model AppUserData
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Регистрация";
 }
 
-<h2>Register</h2>
+<h2>Регистрация</h2>
 
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div>
-        @Html.LabelFor(model => model.Login)
+        <label>Логин</label>
         @Html.EditorFor(model => model.Login)
-        @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
+        @Html.ValidationMessageFor(model => model.Login)
     </div>
     <div>
-        @Html.LabelFor(model => model.Password)
+        <label>Пароль</label>
         @Html.EditorFor(model => model.Password)
         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
     </div>
-    <button type="submit">Register</button>
+    <button type="submit">Регистрация</button>
 }
 
 @section scripts {

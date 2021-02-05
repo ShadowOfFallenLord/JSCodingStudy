@@ -1,15 +1,15 @@
 ﻿<h4 class="text-warning">
-    Hello,
+    Привет,
     @if (User.Identity.IsAuthenticated)
     {
         @User.Identity.Name@:!
-        @Html.ActionLink("Logout", "Logout", "AppUser", null, new { @class = "text-primary" })
+        @Html.ActionLink("Выйти", "Logout", "AppUser", null, new { @class = "text-primary" })
     }
     else
     {
-        @:Guest!
-        @Html.ActionLink("Login", "Login", "AppUser", null, new { @class = "text-primary" })
-        @:or
-        @Html.ActionLink("Register", "Register", "AppUser", null, new { @class = "text-primary" })
+        @:Гость!
+        @Html.ActionLink("Войти", "Login", "AppUser", null, new { @class = "text-primary" })
+        @:или
+        @Html.ActionLink("Зарегистрироваться", "Register", "AppUser", null, new { @class = "text-primary" })
     }
 </h4>
