@@ -3,37 +3,44 @@
 }
 
 <link rel="stylesheet" href="~/Content/RobotStyles/Styles.css" type="text/css" />
-<table cellpadding="10px" cellspacing="0" align="center" class="main_container">
-    <tr align="center" class="display_container">
-        <td align="center" class="half_display">
-            <div id="robot_display">
-                display
+
+<div class="row align-items-start borders" id="page_top_row">
+    <div class="col-lg-5 borders">
+        <div id="robot_display" class="display_table" align="center">
+            display
+        </div>
+    </div>
+    <div class="col-lg-7 full_height borders">
+        <div class="row borders">
+            <div class="col-lg-4 borders">
+                Действия:
             </div>
-        </td>
-        <td align="left" class="log_container">
-            Действия:
-            <textarea id="log_display" readonly="true" class="log_element"></textarea>
-        </td>
-        <td align="left" class="task_container">
-            Задание:
-            <div id="task_display" class="task_element">
+            <div class="col-lg-8 borders">
+                Задание:
+            </div>
+        </div>
+        <div class="row full_height borders">
+            <div class="col-lg-4 full_height borders">
+                <textarea id="log_display" readonly="true" class="form-control"></textarea>
+            </div>
+            <div class="col-lg-8 full_height borders">
                 @RenderSection("task", required: true)
             </div>
-        </td>
-    </tr>
-    <tr align="center" class="control_container">
-        <td class="half_display">
-            Код:
-            <textarea id="code_input" class="code_container"></textarea>
-        </td>
-        <td colspan="2">
-            <input type="button" id="run_button" value="Запуск">
-            <input type="button" id="clear_button" value="Сброс">
-            <input type="button" id="help_button" value="Помощь">
-            @Html.ActionLink("Назад", "Index", "Menu")
-        </td>
-    </tr>
-</table>
+        </div>
+    </div>
+</div>
+<div class="row align-items-center borders" id="page_bottom_row">
+    <div class="col-lg-5 full_height borders">
+        Код:
+        <textarea id="code_input" class="form-control text-left" rows="2"></textarea>
+    </div>
+    <div class="col-lg-7 full_height text-center button_container borders">
+        <input type="button" id="run_button" value="Запуск" class="btn btn-primary">
+        <input type="button" id="clear_button" value="Сброс" class="btn btn-primary">
+        <input type="button" id="help_button" value="Помощь" class="btn btn-primary">
+        @Html.ActionLink("Назад", "Index", "Menu", null, new { @class = "btn btn-primary" })
+    </div>
+</div>
 
 <div id="help_container" class="help_container" style="display: none;">
     <input type="button" id="close_help_button" value="X">
@@ -122,8 +129,9 @@
     else
     {
         @:var RobotAPI = RAPI.CreateFullRobotAPI(10, 10, true, 5, 5, html_elements.LogDisplay, 100);
-    }   
-    
+    }
+
+
     html_elements.RobotDisplay.innerHTML = '';
     html_elements.RobotDisplay.append(RobotAPI.Field.FieldElement);
 
@@ -135,13 +143,35 @@
 </script>
 
 
-    @if (IsSectionDefined("user_code"))
-    {
-        @RenderSection("user_code")
-    }
-    else
-    {
-        <script>
-            html_elements.TextInput.innerHTML = ''
-        </script>
-    }
+@if (IsSectionDefined("user_code"))
+{
+    @RenderSection("user_code")
+}
+else
+{
+    <script>
+        html_elements.TextInput.innerHTML = ''
+    </script>
+}
+
+@section size_scripts {
+    <script>
+        (function () {
+
+            var top_row = $('#page_top_row');
+            var bottom_row = $('#page_bottom_row');
+
+            (function () {
+                var body = $('body');
+                var navbar = $('.navbar');
+                var footer = $('footer');
+                var height = body.height() - navbar.height() - footer.height();
+
+                var hp = height / 3;
+
+                top_row.height(hp * 2);
+                bottom_row.height(hp);
+            })();
+        })();
+    </script>
+}

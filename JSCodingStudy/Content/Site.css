@@ -1,4 +1,12 @@
-﻿body {
+﻿html, body {
+    height: 100%;
+}
+
+.full_height {
+    height: 100%;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -17,8 +25,8 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
+/*input,
 select,
 textarea {
     max-width: 280px;
-}
+}*/

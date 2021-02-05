@@ -4,7 +4,11 @@
 }
 
 @section task {
-    Песочница.
+    @foreach(string s in @Model.Task.Split('\n'))
+    {
+        @s
+        <br />
+    }
 }
 
 @section help {
