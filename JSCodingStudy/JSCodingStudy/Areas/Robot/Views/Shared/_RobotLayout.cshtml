@@ -151,13 +151,12 @@
     <!-- Для если пройден последний открытый урок можно открыть следующий -->
     <script>
         ResultContainer.Functions.SendSuccess = function () {
-            // Успешное выполнение урока
             $.ajax({
                 url: '@Url.Action("SuccessLesson", "Lesson")',
                 type: 'post',
                 data: {
-                    id: @LessonId
-                }
+                    id: @LessonId,
+                },
             });
         };
     </script>
