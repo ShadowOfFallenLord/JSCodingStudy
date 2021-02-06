@@ -60,7 +60,7 @@
     <div id="result_message">
         Результат
     </div>
-    <input type="button" id="save_result_button" value="Сохранить" class="btn btn btn-success">
+    <input type="button" id="save_result_button" value="Сохранить" class="btn btn-success">
     <input type="button" id="close_result_button" value="Продолжить" class="btn btn-primary">
 </div>
 
@@ -140,35 +140,69 @@
 
 @if (IsLesson)
 {
+    <script>
+        function CreateTempNotice(text, text_style, btn_text, btn_style) {
+            var content = $('<div>');
+            content.html(text);
+            content.attr('class', text_style);
+
+            var btn = $('<input type="button">');
+            btn.val(btn_text);
+            btn.attr('class', btn_style);
+
+            var instance = $('<div class="popup_container borders borders_inside">');
+            instance.append(content);
+            instance.append(btn);
+
+            btn.click(function () {
+                instance.detach();
+            })
+
+            return instance;
+        }
+    </script>
+
     <!-- Для если пройден последний открытый урок можно открыть следующий -->
     <script>
-        ResultContainer.Functions.SendSuccess = function () {
-            $.ajax({
-                url: '@Url.Action("SuccessLesson", "Lesson")',
-                type: 'post',
-                data: {
-                    id: @LessonId,
-                },
-            }).done(function (data) {
-                alert('Success');
-            });
-        };
+        (function () {
+            var notice = CreateTempNotice('Урок пройден!', 'text-success', 'Продолжить', 'btn btn-success');
+            var toggle = PopUpToggleInit(notice, FullBody);
+
+            ResultContainer.Functions.SendSuccess = function () {
+                $.ajax({
+                    url: '@Url.Action("SuccessLesson", "Lesson")',
+                    type: 'post',
+                    data: {
+                        id: @LessonId,
+                    },
+                }).done(function (data) {
+                    $('#main_page_container').append(notice);
+                    toggle.ShowInCenter();
+                });
+            };
+        })();
     </script>
 
     <!-- Для урока можно сохранить полученное решение -->
     <script>
-        ResultContainer.Buttons.Save.click(function () {
-            $.ajax({
-                url: '@Url.Action("SaveCode", "Lesson")',
-                type: 'post',
-                data: {
-                    id: @LessonId,
-                    code: html_elements.TextInput.val(),
-                },
-            }).done(function (data) {
-                alert('Success');
+        (function () {
+            var notice = CreateTempNotice('Код сохранен!', 'text-success', 'Продолжить', 'btn btn-success');
+            var toggle = PopUpToggleInit(notice, FullBody);
+
+            ResultContainer.Buttons.Save.click(function () {
+                $.ajax({
+                    url: '@Url.Action("SaveCode", "Lesson")',
+                    type: 'post',
+                    data: {
+                        id: @LessonId,
+                        code: html_elements.TextInput.val(),
+                    },
+                }).done(function (data) {
+                    $('#main_page_container').append(notice);
+                    toggle.ShowInCenter();
+                });
             });
-        });
+        })();
     </script>
 }
 else
