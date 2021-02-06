@@ -25,7 +25,7 @@ namespace JSCodingStudy.Models
                 Id = 1,
                 Login = "user1",
                 Password = "123",
-                LastRobotLesson = 0
+                LastRobotLesson = 1
             });
         }
 
@@ -35,8 +35,10 @@ namespace JSCodingStudy.Models
         public static AppUserData Find(string login, string password) => users
             .FirstOrDefault(x => x.Login == login && x.Password == password);
 
-        public static bool HasCheck(string login) => users
-            .Any(x => x.Login == login);
+        public static AppUserData Find(string login) => users
+            .FirstOrDefault(x => x.Login == login);
+
+        public static bool HasCheck(string login) => !(Find(login) is null);
 
         public static IEnumerable<AppUserData> GetAll() => users;
 
@@ -47,7 +49,7 @@ namespace JSCodingStudy.Models
                 Id = users.Last().Id + 1,
                 Login = login,
                 Password = password,
-                LastRobotLesson = 0
+                LastRobotLesson = 1
             };
             users.Add(user);
             return user;

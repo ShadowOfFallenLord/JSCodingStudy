@@ -153,6 +153,10 @@
         ResultContainer.Functions.SendSuccess = function () {
             // Успешное выполнение урока
             alert('Success @LessonId');
+            $.ajax({
+                url: '@Url.Action("SuccessLesson", "Lesson", new { id = LessonId })',
+                type: 'post',
+            });
         };
     </script>
 }

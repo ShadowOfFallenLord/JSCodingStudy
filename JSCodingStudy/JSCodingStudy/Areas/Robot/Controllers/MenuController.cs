@@ -1,4 +1,5 @@
 ﻿using JSCodingStudy.Areas.Robot.Model;
+using JSCodingStudy.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,10 @@ namespace JSCodingStudy.Areas.Robot.Controllers
         // GET: Robot/Menu
         public ActionResult Index()
         {
-            IEnumerable<LessonInfo> lessons = LessonsDaoMoq.GetAllInfo();
+            AppUserData user = AppUserDaoMoq.Find(HttpContext.User.Identity.Name);
+            IEnumerable<LessonInfo> lessons = LessonsDaoMoq
+                .GetAllInfo()
+                .Where(x => x.Id <= user.LastRobotLesson);
             return View(lessons);
         }
     }

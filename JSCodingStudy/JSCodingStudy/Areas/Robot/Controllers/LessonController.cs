@@ -1,4 +1,5 @@
 ﻿using JSCodingStudy.Areas.Robot.Model;
+using JSCodingStudy.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,17 @@ namespace JSCodingStudy.Areas.Robot.Controllers
         {
             LessonData lesson = LessonsDaoMoq.GetLessonById(id);
             return View(lesson);
+        }
+
+        [HttpPost]
+        public ActionResult SuccessLesson(int id)
+        {
+            AppUserData user = AppUserDaoMoq.Find(HttpContext.User.Identity.Name);
+            if(user.LastRobotLesson == id)
+            {
+                user.LastRobotLesson++;
+            }
+            return View();
         }
     }
 }
