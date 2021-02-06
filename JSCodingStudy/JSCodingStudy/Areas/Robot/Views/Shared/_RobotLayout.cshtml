@@ -152,10 +152,12 @@
     <script>
         ResultContainer.Functions.SendSuccess = function () {
             // Успешное выполнение урока
-            alert('Success @LessonId');
             $.ajax({
-                url: '@Url.Action("SuccessLesson", "Lesson", new { id = LessonId })',
+                url: '@Url.Action("SuccessLesson", "Lesson")',
                 type: 'post',
+                data: {
+                    id: @LessonId
+                }
             });
         };
     </script>
