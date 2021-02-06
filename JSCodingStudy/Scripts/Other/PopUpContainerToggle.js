@@ -30,8 +30,8 @@ function PopUpToggleInit(element, full_doc)
     }
 
     instance.ShowInCenter = function () {
-        instance.Show();
         instance.MoveToCenter();
+        instance.Show();
     }
 
     return instance;

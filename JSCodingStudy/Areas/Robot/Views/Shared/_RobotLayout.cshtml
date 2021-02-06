@@ -35,7 +35,7 @@
             Код:
         </div>
         <div class="borders full_height">
-            <textarea id="code_input" class="form-control text-left" rows="2"></textarea>
+            <textarea id="code_input" class="form-control text-left"></textarea>
         </div>
     </div>
     <div class="col-lg-7 full_height text-center button_container borders">
@@ -51,6 +51,14 @@
     <ul id="help_text" style="padding: 5px;">
         Справка по командам
     </ul>
+</div>
+
+<div id="result_container" class="popup_container borders borders_inside" style="display: none;">
+    <div id="result_message">
+        Result
+    </div>
+    <input type="button" id="save_result_button" value="Save" class="btn btn btn-success">
+    <input type="button" id="close_result_button" value="Ok" class="btn btn-primary">
 </div>
 
 <!-- Основные элементы -->
@@ -106,6 +114,50 @@
     help_test.html(help_node);
 </script>
 
+<!-- Настройка окошка результата -->
+<script>
+    var ResultContainer = {
+        ContainerElement: $('#result_container'),
+        MessageElement: $('#result_message'),
+        Buttons: {
+            Save: $('#save_result_button'),
+            Close: $('#close_result_button'),
+        },
+        Functions: {}
+    };
+
+    ResultContainer.Toggle = PopUpToggleInit(ResultContainer.ContainerElement, FullBody);
+
+    ResultContainer.Functions.Hide = ResultContainer.Toggle.Hide;
+    ResultContainer.Functions.Show = ResultContainer.Toggle.ShowInCenter;
+
+    ResultContainer.Buttons.Close.click(ResultContainer.Functions.Hide);
+
+    ResultContainer.Functions.SaveButtonDisable = function (flag) {
+        ResultContainer.Buttons.Save.prop("disabled", flag);
+    }
+
+    ResultContainer.Functions.SetMessage = function (text) {
+        ResultContainer.MessageElement.html(text);
+    }
+    ResultContainer.Functions.SetMessageClass = function (text) {
+        ResultContainer.MessageElement.attr('class', text);
+    }
+
+    ResultContainer.Functions.Handle = function (res, text) {
+        ResultContainer.Functions.SetMessage(text);
+        if (res == 0) {
+            ResultContainer.Functions.SaveButtonDisable(false);
+            ResultContainer.Functions.SetMessageClass('text-success');
+        }
+        else {
+            ResultContainer.Functions.SaveButtonDisable(true);
+            ResultContainer.Functions.SetMessageClass('text-danger');
+        }
+        ResultContainer.Functions.Show();
+    }
+</script>
+
 <!-- Подтягивание API робота -->
 <script type="module">
     import * as RAPI from "@Url.Content("~/Scripts/Robot/RobotAPI/GeneralRobotAPI.js")";
@@ -124,18 +176,18 @@
     html_elements.RobotDisplay.html(RobotAPI.Field.FieldElement);
 
     html_elements.Buttons.ClearButton.click(RobotAPI.Reset);
-    html_elements.Buttons.RunButton.click(function() {
-        var code = html_elements.TextInput.text();
+    html_elements.Buttons.RunButton.click(function () {
+        var code = html_elements.TextInput.val();
 
         function additional_result_check() {
             var res_int = RobotAPI.CheckResults();
             var res_str = RobotAPI.GetResultString(res_int);
 
-            if (res_int == 0) {
-                // Место для отправки успешного кода на сервер
-            }
-
-            alert(res_str);
+            ResultContainer.Functions.Handle(res_int, res_str);
+            ResultContainer.Buttons.Save.click(function () {
+                // Сохранение кода
+                alert('Save');
+            });
         }
 
         RobotAPI.Execute(code, additional_result_check);
@@ -150,7 +202,7 @@
     }
     else
     {
-         @:html_elements.TextInput.html('');
+         @:html_elements.TextInput.val('');
     }
 </script>
 
