@@ -161,13 +161,13 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\RobotAPI\Common\Common.js" />
-    <Content Include="Scripts\RobotAPI\Field\FieldAPI.js" />
-    <Content Include="Scripts\RobotAPI\Field\FieldConstans.js" />
-    <Content Include="Scripts\RobotAPI\GeneralRobotAPI.js" />
-    <Content Include="Scripts\RobotAPI\RobotControler.js" />
-    <Content Include="Scripts\RobotAPI\Robot\RobotAPI.js" />
-    <Content Include="Scripts\RobotAPI\Robot\RobotConstants.js" />
+    <Content Include="Scripts\Robot\RobotAPI\Common\Common.js" />
+    <Content Include="Scripts\Robot\RobotAPI\Field\FieldAPI.js" />
+    <Content Include="Scripts\Robot\RobotAPI\Field\FieldConstans.js" />
+    <Content Include="Scripts\Robot\RobotAPI\GeneralRobotAPI.js" />
+    <Content Include="Scripts\Robot\RobotAPI\RobotControler.js" />
+    <Content Include="Scripts\Robot\RobotAPI\Robot\RobotAPI.js" />
+    <Content Include="Scripts\Robot\RobotAPI\Robot\RobotConstants.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
