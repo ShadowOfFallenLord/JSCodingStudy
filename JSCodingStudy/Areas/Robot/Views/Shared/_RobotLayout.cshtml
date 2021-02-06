@@ -114,6 +114,9 @@
     help_test.html(help_node);
 </script>
 
+<!-- Инифиализация функций для контейнера с результатом -->
+<script src="@Url.Content("~/Scripts/Other/ResultContainerFunctionsInit.js")"></script>
+
 <!-- Настройка окошка результата -->
 <script>
     var ResultContainer = {
@@ -128,34 +131,8 @@
 
     ResultContainer.Toggle = PopUpToggleInit(ResultContainer.ContainerElement, FullBody);
 
-    ResultContainer.Functions.Hide = ResultContainer.Toggle.Hide;
-    ResultContainer.Functions.Show = ResultContainer.Toggle.ShowInCenter;
-
+    ResultContainer.Functions = InitResultContainerFinctions(ResultContainer);
     ResultContainer.Buttons.Close.click(ResultContainer.Functions.Hide);
-
-    ResultContainer.Functions.SaveButtonDisable = function (flag) {
-        ResultContainer.Buttons.Save.prop("disabled", flag);
-    }
-
-    ResultContainer.Functions.SetMessage = function (text) {
-        ResultContainer.MessageElement.html(text);
-    }
-    ResultContainer.Functions.SetMessageClass = function (text) {
-        ResultContainer.MessageElement.attr('class', text);
-    }
-
-    ResultContainer.Functions.Handle = function (res, text) {
-        ResultContainer.Functions.SetMessage(text);
-        if (res == 0) {
-            ResultContainer.Functions.SaveButtonDisable(false);
-            ResultContainer.Functions.SetMessageClass('text-success');
-        }
-        else {
-            ResultContainer.Functions.SaveButtonDisable(true);
-            ResultContainer.Functions.SetMessageClass('text-danger');
-        }
-        ResultContainer.Functions.Show();
-    }
 </script>
 
 <!-- Подтягивание API робота -->
