@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Sandbox";
+}
+
+@section task {
+    Песочница.
+}
+
+@section user_code {
+<script>
+    html_elements.TextInput.innerHTML = `while(Robot.Check(Directions.Up, Checks.Void))
+{
+    Robot.Move(Directions.Up);
+    Robot.Draw();
+}
+Robot.Move(Directions.Right);
+for(var i = 0; i < 4; i++)
+{
+    Robot.Move(Directions.Up);
+    Robot.Draw();
+}`
+</script>
+}

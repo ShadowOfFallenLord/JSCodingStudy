@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - JSCodingStudy</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>var FullBody = $('body');</script>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-5 text-left">
+                    @Html.ActionLink("JSCodingStudy", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="col-lg-5 text-right">
+                    @Html.Partial("_UserPartial")
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content full_height">
+        <div class="container" id="main_page_container">
+            @RenderBody()
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; Алексей Петров, 2020-2021</p>
+        </footer>
+    </div>
+
+    <script>
+        (function () {
+            (function () {
+                var navbar = $('.navbar');
+                var footer = $('footer');
+                var height = FullBody.height() - navbar.height() - footer.height();
+
+                $('#main_page_container').height(height);
+            })();
+        })();
+    </script>
+
+    @RenderSection("scripts", required: false);
+</body>
+</html>
