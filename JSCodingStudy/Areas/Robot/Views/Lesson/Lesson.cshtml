@@ -26,11 +26,11 @@
         @:'@line',
     }
     ]
-    var RobotAPI = RAPI.CreateFullRobotAPIWithPattern(pattern, @Model.StartX, @Model.StartY, html_elements.LogDisplay, delay);
+    var RobotAPI = RAPI.CreateFullRobotAPIWithPattern(pattern, @Model.StartX, @Model.StartY, html_elements.LogDisplay.get(0), delay);
 }
 
 @section user_code {
     <script>
-        html_elements.TextInput.innerHTML = `@Model.Code`
+        html_elements.TextInput.html(`@Model.Code`);
     </script>
 }
