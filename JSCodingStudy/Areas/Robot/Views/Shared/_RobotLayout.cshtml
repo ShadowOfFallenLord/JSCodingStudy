@@ -82,7 +82,7 @@
     }
 </script>
 
-<!-- Переключатель всплывающих окошек -->
+<!-- Подтягивание API переключателя всплывающих окошек -->
 <script src="@Url.Content("~/Scripts/Other/PopUpContainerToggle.js")"></script>
 
 <!-- Открытие/закрытие окошка помощи -->
@@ -97,7 +97,7 @@
     })();
 </script>
 
-<!-- Содержание окошка помощи -->
+<!-- Содержимое окошка помощи -->
 <script type="module">
     import * as RAPI from "@Url.Content("~/Scripts/Robot/RobotAPI/GeneralRobotAPI.js")";
     var help = RAPI.GetHelpAPI();
@@ -114,7 +114,7 @@
     help_test.html(help_node);
 </script>
 
-<!-- Инифиализация функций для контейнера с результатом -->
+<!-- Подтягивание API инифиализации функций для контейнера с результатом -->
 <script src="@Url.Content("~/Scripts/Other/ResultContainerFunctionsInit.js")"></script>
 
 <!-- Настройка окошка результата -->
@@ -126,7 +126,6 @@
             Save: $('#save_result_button'),
             Close: $('#close_result_button'),
         },
-        Functions: {}
     };
 
     ResultContainer.Toggle = PopUpToggleInit(ResultContainer.ContainerElement, FullBody);
@@ -135,7 +134,7 @@
     ResultContainer.Buttons.Close.click(ResultContainer.Functions.Hide);
 </script>
 
-<!-- Подтягивание API робота -->
+<!-- Подтягивание API и настройка робота -->
 <script type="module">
     import * as RAPI from "@Url.Content("~/Scripts/Robot/RobotAPI/GeneralRobotAPI.js")";
 
