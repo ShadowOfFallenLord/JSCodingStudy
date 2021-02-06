@@ -30,11 +30,13 @@ namespace JSCodingStudy.Areas.Robot.Controllers
         public ActionResult SuccessLesson(int id)
         {
             AppUserData user = AppUserDaoMoq.Find(HttpContext.User.Identity.Name);
+            bool flag = false;
             if(user.LastRobotLesson == id)
             {
                 user.LastRobotLesson++;
+                flag = true;
             }
-            return Json(new { success = true });
+            return Json(new { success = true, updated = flag });
         }
 
         [HttpPost]

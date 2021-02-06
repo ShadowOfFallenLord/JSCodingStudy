@@ -176,8 +176,10 @@
                         id: @LessonId,
                     },
                 }).done(function (data) {
-                    $('#main_page_container').append(notice);
-                    toggle.ShowInCenter();
+                    if (data.updated) {
+                        $('#main_page_container').append(notice);
+                        toggle.ShowInCenter();
+                    }
                 });
             };
         })();
