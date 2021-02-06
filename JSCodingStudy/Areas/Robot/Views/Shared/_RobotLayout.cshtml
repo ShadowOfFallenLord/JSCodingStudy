@@ -131,7 +131,12 @@
     ResultContainer.Toggle = PopUpToggleInit(ResultContainer.ContainerElement, FullBody);
 
     ResultContainer.Functions = InitResultContainerFinctions(ResultContainer);
+
     ResultContainer.Buttons.Close.click(ResultContainer.Functions.Hide);
+    ResultContainer.Buttons.Save.click(function () {
+        // Сохранение кода
+        alert('Save');
+    });
 </script>
 
 <!-- Подтягивание API и настройка робота -->
@@ -159,11 +164,12 @@
             var res_int = RobotAPI.CheckResults();
             var res_str = RobotAPI.GetResultString(res_int);
 
+            if (res_int == 0) {
+                // Успешное выполнение урока
+                alert('Success');
+            }
+
             ResultContainer.Functions.Handle(res_int, res_str);
-            ResultContainer.Buttons.Save.click(function () {
-                // Сохранение кода
-                alert('Save');
-            });
         }
 
         RobotAPI.Execute(code, additional_result_check);
