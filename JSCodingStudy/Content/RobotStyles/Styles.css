@@ -14,12 +14,10 @@ textarea.form-control {
     resize: none;
 }
 
-.help_container {
+.popup_container {
     position: absolute;
     background-color: white;
     padding: 5px;
-    /* Границы */
-    border: solid 1px black;
 }
 
 .button_container {
