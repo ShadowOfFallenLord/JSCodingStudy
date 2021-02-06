@@ -74,8 +74,21 @@
     }
 </script>
 
+<!-- Переключатель всплывающих окошек -->
+<script src="@Url.Content("~/Scripts/Other/PopUpContainerToggle.js")"></script>
+
 <!-- Открытие/закрытие окошка помощи -->
-<script src="@Url.Content("~/Scripts/Robot/HelpContainerToggle.js")"></script>
+<script>
+    (function () {
+        var HelpContainer = $('#help_container');
+        var doc = $('html');
+
+        var toggle = PopUpToggleInit(HelpContainer, doc);
+
+        $('#close_help_button').click(toggle.Hide);
+        html_elements.Buttons.HelpButton.click(toggle.ShowInCenter);
+    })();
+</script>
 
 <!-- Содержание окошка помощи -->
 <script type="module">
