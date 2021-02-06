@@ -86,7 +86,7 @@
 </script>
 
 <!-- Подтягивание API переключателя всплывающих окошек -->
-<script src="@Url.Content("~/Scripts/Other/PopUpContainerToggle.js")"></script>
+<script src="~/Scripts/Other/PopUpContainerToggle.js"></script>
 
 <!-- Открытие/закрытие окошка помощи -->
 <script>
@@ -102,7 +102,7 @@
 
 <!-- Содержимое окошка помощи -->
 <script type="module">
-    import * as RAPI from "@Url.Content("~/Scripts/Robot/RobotAPI/GeneralRobotAPI.js")";
+    import * as RAPI from '@Url.Content("~/Scripts/Robot/RobotAPI/GeneralRobotAPI.js")';
     var help = RAPI.GetHelpAPI();
     var help_test = $('#help_text');
 
@@ -118,7 +118,7 @@
 </script>
 
 <!-- Подтягивание API инифиализации функций для контейнера с результатом -->
-<script src="@Url.Content("~/Scripts/Other/ResultContainerFunctionsInit.js")"></script>
+<script src="~/Scripts/Other/ResultContainerFunctionsInit.js"></script>
 
 <!-- Настройка окошка результата -->
 <script>
@@ -140,28 +140,7 @@
 
 @if (IsLesson)
 {
-    <script>
-        function CreateTempNotice(container_class, text, text_style, btn_text, btn_style) {
-            var content = $('<div>');
-            content.html(text);
-            content.attr('class', text_style);
-
-            var btn = $('<input type="button">');
-            btn.val(btn_text);
-            btn.attr('class', btn_style);
-
-            var instance = $('<div>');
-            instance.attr('class', container_class);
-            instance.append(content);
-            instance.append(btn);
-
-            btn.click(function () {
-                instance.detach();
-            })
-
-            return instance;
-        }
-    </script>
+    <script src="~/Scripts/Other/CreateTempNotice.js"></script>
 
     <!-- Для если пройден последний открытый урок можно открыть следующий -->
     <script>
@@ -218,7 +197,7 @@ else
 
 <!-- Подтягивание API и настройка робота -->
 <script type="module">
-    import * as RAPI from "@Url.Content("~/Scripts/Robot/RobotAPI/GeneralRobotAPI.js")";
+    import * as RAPI from '@Url.Content("~/Scripts/Robot/RobotAPI/GeneralRobotAPI.js")';
 
     const delay = 100;
 
