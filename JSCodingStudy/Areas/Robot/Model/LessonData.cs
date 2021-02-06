@@ -40,9 +40,83 @@ namespace JSCodingStudy.Areas.Robot.Model
         {
             return new LessonData
             {
-                Id = 0,
+                Id = 1,
 
-                Title = "Передвижение",
+                Title = "Передвижение 1",
+
+                Task = "Сперва попробуем двигаться по вертикали.\n" +
+                    "Для передвижения используется команда Robot.Move с аргументом, обозначающим направление. Подробнее можно узнать нажав на кнопку Помощь.\n" +
+                    "Нужно поднять 2 флага (F).\n" +
+                    "Для этого нужно один раз передвинуть робота вверх и два раза вниз.",
+
+                Pattern = new string[]
+                {
+                    ".....",
+                    ".F...",
+                    ".....",
+                    ".F...",
+                    ".....",
+                },
+                StartX = 1,
+                StartY = 2,
+
+                APIHelp = new APIReference
+                {
+                    Move = true,
+                    Check = false,
+                    Draw = false,
+                },
+
+                Code = "Robot.Move(Directions.Up);\n" +
+                "Robot.Move(Directions.Down);\n" +
+                "Robot.Move(Directions.Down);"
+            };
+        }
+
+        private static LessonData GenerateLesson2()
+        {
+            return new LessonData
+            {
+                Id = 2,
+
+                Title = "Передвижение 1",
+
+                Task = "Теперь попробуем двигаться по горизонтали.\n" +
+                    "Для передвижения используется команда Robot.Move с аргументом, обозначающим направление. Подробнее можно узнать нажав на кнопку Помощь.\n" +
+                    "Нужно поднять 2 флага (F).\n" +
+                    "Для этого нужно один раз передвинуть робота влево и два раза вправо.",
+
+                Pattern = new string[]
+                {
+                    ".....",
+                    ".....",
+                    ".F.F.",
+                    ".....",
+                    ".....",
+                },
+                StartX = 2,
+                StartY = 2,
+
+                APIHelp = new APIReference
+                {
+                    Move = true,
+                    Check = false,
+                    Draw = false,
+                },
+
+                Code = "Robot.Move(Directions.Left);\n" +
+                "Robot.Move(Directions.Right);\n" +
+                "Robot.Move(Directions.Right);"
+            };
+        }
+
+        private static LessonData GenerateLesson3()
+        {
+            return new LessonData
+            {
+                Id = 3,
+
+                Title = "Передвижение 3",
 
                 Task = "Начнем с передвижения.\n" +
                     "Для этого используется команда Robot.Move с аргументом, обозначающим направление. Подробнее можно узнать нажав на кнопку Помощь.\n" +
@@ -81,6 +155,8 @@ namespace JSCodingStudy.Areas.Robot.Model
         {
             lessons = new List<LessonData>();
             lessons.Add(GenerateLesson1());
+            lessons.Add(GenerateLesson2());
+            lessons.Add(GenerateLesson3());
         }
 
         public static LessonData GetLessonById(int id) => lessons
