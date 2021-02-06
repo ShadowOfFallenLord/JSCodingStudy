@@ -20,7 +20,9 @@ namespace JSCodingStudy.Areas.Robot.Controllers
         // GET: Robot/Lesson
         public ActionResult Lesson(int id)
         {
+            AppUserData user = AppUserDaoMoq.Find(HttpContext.User.Identity.Name);
             LessonData lesson = LessonsDaoMoq.GetLessonById(id);
+            lesson.Code = UserCodeDaoMoq.Get(user.Id, id);
             return View(lesson);
         }
 
@@ -32,7 +34,15 @@ namespace JSCodingStudy.Areas.Robot.Controllers
             {
                 user.LastRobotLesson++;
             }
-            return View();
+            return Json(new { success = true });
+        }
+
+        [HttpPost]
+        public ActionResult SaveCode(int id, string code)
+        {
+            AppUserData user = AppUserDaoMoq.Find(HttpContext.User.Identity.Name);
+            UserCodeDaoMoq.Set(user.Id, id, code);
+            return Json(new { success = true });
         }
     }
 }

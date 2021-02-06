@@ -143,8 +143,14 @@
     <!-- Для урока можно сохранить полученное решение -->
     <script>
         ResultContainer.Buttons.Save.click(function () {
-            // Сохранение кода
-            alert('Save @LessonId');
+            $.ajax({
+                url: '@Url.Action("SaveCode", "Lesson")',
+                type: 'post',
+                data: {
+                    id: @LessonId,
+                    code: html_elements.TextInput.val(),
+                },
+            });
         });
     </script>
 

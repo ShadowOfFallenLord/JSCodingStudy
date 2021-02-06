@@ -166,4 +166,36 @@ namespace JSCodingStudy.Areas.Robot.Model
 
         public static IEnumerable<LessonInfo> GetAllInfo() => lessons;
     }
+
+    public static class UserCodeDaoMoq
+    {
+        public static Dictionary<int, Dictionary<int, string>> codes = new Dictionary<int, Dictionary<int, string>>();
+
+        public static string Get(int user_id, int lesson_id)
+        {
+            string res = "";
+            if(codes.ContainsKey(user_id))
+            {
+                if (codes[user_id].ContainsKey(lesson_id))
+                {
+                    res = codes[user_id][lesson_id];
+                }
+            }
+            return res;
+        }
+
+        public static void Set(int user_id, int lesson_id, string code)
+        {
+            if (!codes.ContainsKey(user_id))
+            {
+                codes.Add(user_id, new Dictionary<int, string>());
+            }
+            if(!codes[user_id].ContainsKey(lesson_id))
+            {
+                codes[user_id].Add(lesson_id, null);
+            }
+
+            codes[user_id][lesson_id] = code;
+        }
+    }
 }
