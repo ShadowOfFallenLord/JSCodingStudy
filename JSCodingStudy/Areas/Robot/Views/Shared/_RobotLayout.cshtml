@@ -46,6 +46,14 @@
     </div>
 </div>
 
+<div id="help_container" class="help_container borders_inside" style="display: none;">
+    <input type="button" id="close_help_button" value="X">
+    <ul id="help_text" style="padding: 5px;">
+        Справка по командам
+    </ul>
+</div>
+
+<!-- Основные элементы -->
 <script>
     var html_elements = {
         // Контейнер экрана робота.
@@ -65,13 +73,6 @@
         }
     }
 </script>
-
-<div id="help_container" class="help_container borders_inside" style="display: none;">
-    <input type="button" id="close_help_button" value="X">
-    <ul id="help_text" style="padding: 5px;">
-        Справка по командам
-    </ul>
-</div>
 
 <!-- Открытие/закрытие окошка помощи -->
 <script>
@@ -97,6 +98,7 @@
         });
     });
 </script>
+
 <!-- Содержание окошка помощи -->
 <script type="module">
     import * as RAPI from "@Url.Content("~/Scripts/Robot/RobotAPI/GeneralRobotAPI.js")";
@@ -114,6 +116,7 @@
     help_test.html(help_node);
 </script>
 
+<!-- Подтягивание API робота -->
 <script type="module">
     import * as RAPI from "@Url.Content("~/Scripts/Robot/RobotAPI/GeneralRobotAPI.js")";
 
@@ -149,19 +152,20 @@
     });
 </script>
 
-
-@if (IsSectionDefined("user_code"))
-{
-    @RenderSection("user_code")
-}
-else
-{
-    <script>
-        html_elements.TextInput.html('');
-    </script>
-}
+<!-- Установка пользовательского кода -->
+<script>
+    @if (IsSectionDefined("user_code"))
+    {
+        @RenderSection("user_code")
+    }
+    else
+    {
+         @:html_elements.TextInput.html('');
+    }
+</script>
 
 @section scripts {
+    <!-- Растягивание "таблицы" на весь экран -->
     <script>
         (function () {
             var height = $('#main_page_container').height();
