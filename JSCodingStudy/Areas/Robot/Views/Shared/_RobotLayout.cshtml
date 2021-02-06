@@ -81,9 +81,8 @@
 <script>
     (function () {
         var HelpContainer = $('#help_container');
-        var doc = $('html');
 
-        var toggle = PopUpToggleInit(HelpContainer, doc);
+        var toggle = PopUpToggleInit(HelpContainer, FullBody);
 
         $('#close_help_button').click(toggle.Hide);
         html_elements.Buttons.HelpButton.click(toggle.ShowInCenter);
