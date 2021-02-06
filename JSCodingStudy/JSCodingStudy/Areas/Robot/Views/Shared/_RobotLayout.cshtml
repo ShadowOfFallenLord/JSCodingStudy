@@ -1,5 +1,8 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    bool IsLesson = (bool)ViewBag.IsLesson;
+    int LessonId = (int)ViewBag.LessonId;
 }
 
 <link rel="stylesheet" href="~/Content/RobotStyles/Styles.css" type="text/css" />
@@ -133,11 +136,33 @@
     ResultContainer.Functions = InitResultContainerFinctions(ResultContainer);
 
     ResultContainer.Buttons.Close.click(ResultContainer.Functions.Hide);
-    ResultContainer.Buttons.Save.click(function () {
-        // Сохранение кода
-        alert('Save');
-    });
 </script>
+
+@if (IsLesson)
+{
+    <!-- Для урока можно сохранить полученное решение -->
+    <script>
+        ResultContainer.Buttons.Save.click(function () {
+            // Сохранение кода
+            alert('Save @LessonId');
+        });
+    </script>
+
+    <!-- Для если пройден последний открытый урок можно открыть следующий -->
+    <script>
+        ResultContainer.Functions.SendSuccess = function () {
+            // Успешное выполнение урока
+            alert('Success @LessonId');
+        };
+    </script>
+}
+else
+{
+    <!-- Для песочницы нельзя сохранить полученное решение -->
+    <script>
+        ResultContainer.Buttons.Save.addClass('hidden');
+    </script>
+}
 
 <!-- Подтягивание API и настройка робота -->
 <script type="module">
@@ -164,9 +189,9 @@
             var res_int = RobotAPI.CheckResults();
             var res_str = RobotAPI.GetResultString(res_int);
 
-            if (res_int == 0) {
-                // Успешное выполнение урока
-                alert('Success');
+            @if (IsLesson)
+            {
+                @:if (res_int == 0) ResultContainer.Functions.SendSuccess();
             }
 
             ResultContainer.Functions.Handle(res_int, res_str);
