@@ -74,7 +74,7 @@
         HelpContainer.style.top = ((screen_heigth / 2) - (element_heigth / 2)) + "px";
     };
 
-    import * as RAPI from "@Url.Content("~/Scripts/RobotAPI/GeneralRobotAPI.js")";
+    import * as RAPI from "@Url.Content("~/Scripts/Robot/RobotAPI/GeneralRobotAPI.js")";
     var help = RAPI.GetHelpAPI();
     var help_test = document.getElementById('help_text');
 
@@ -124,7 +124,9 @@
 </script>
 
 <script type="module">
-    import * as RAPI from "@Url.Content("~/Scripts/RobotAPI/GeneralRobotAPI.js")";
+    import * as RAPI from "@Url.Content("~/Scripts/Robot/RobotAPI/GeneralRobotAPI.js")";
+
+    const delay = 200;
 
     @if (IsSectionDefined("field_init"))
     {
@@ -132,7 +134,7 @@
     }
     else
     {
-        @:var RobotAPI = RAPI.CreateFullRobotAPI(10, 10, true, 5, 5, html_elements.LogDisplay, 100);
+        @:var RobotAPI = RAPI.CreateFullRobotAPI(10, 10, true, 5, 5, html_elements.LogDisplay, delay);
     }
 
 
