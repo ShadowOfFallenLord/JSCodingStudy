@@ -1,0 +1,51 @@
+﻿@model int?
+@{
+    int LessonId = Model ?? -1;
+}
+
+<script src="~/Scripts/Other/CreateTempNotice.js"></script>
+
+<!-- Для если пройден последний открытый урок можно открыть следующий -->
+<script>
+    (function () {
+        var notice = CreateTempNotice('popup_container borders borders_inside', 'Урок пройден!', 'text-success', 'Продолжить', 'btn btn-success');
+        var toggle = PopUpToggleInit(notice, FullBody);
+
+        ResultContainer.Functions.SendSuccess = function () {
+            $.ajax({
+                url: '@Url.Action("SuccessLesson", "Lesson")',
+                type: 'post',
+                data: {
+                    id: @LessonId,
+                },
+            }).done(function (data) {
+                if (data.updated) {
+                    $('#main_page_container').append(notice);
+                    toggle.ShowInCenter();
+                }
+            });
+        };
+    })();
+</script>
+
+<!-- Для урока можно сохранить полученное решение -->
+<script>
+    (function () {
+        var notice = CreateTempNotice('popup_container borders borders_inside', 'Код сохранен!', 'text-success', 'Продолжить', 'btn btn-success');
+        var toggle = PopUpToggleInit(notice, FullBody);
+
+        ResultContainer.Buttons.Save.click(function () {
+            $.ajax({
+                url: '@Url.Action("SaveCode", "Lesson")',
+                type: 'post',
+                data: {
+                    id: @LessonId,
+                    code: html_elements.TextInput.val(),
+                },
+            }).done(function (data) {
+                $('#main_page_container').append(notice);
+                toggle.ShowInCenter();
+            });
+        });
+    })();
+</script>

@@ -150,6 +150,7 @@
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Areas\Robot\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Robot\Views\Shared\_RobotLayout.cshtml" />
+    <Content Include="Areas\Robot\Views\Shared\_LessonAjaxScriptsPartial.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
