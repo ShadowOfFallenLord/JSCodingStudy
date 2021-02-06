@@ -140,6 +140,21 @@
 
 @if (IsLesson)
 {
+    <!-- Для если пройден последний открытый урок можно открыть следующий -->
+    <script>
+        ResultContainer.Functions.SendSuccess = function () {
+            $.ajax({
+                url: '@Url.Action("SuccessLesson", "Lesson")',
+                type: 'post',
+                data: {
+                    id: @LessonId,
+                },
+            }).done(function (data) {
+                alert('Success');
+            });
+        };
+    </script>
+
     <!-- Для урока можно сохранить полученное решение -->
     <script>
         ResultContainer.Buttons.Save.click(function () {
@@ -150,21 +165,10 @@
                     id: @LessonId,
                     code: html_elements.TextInput.val(),
                 },
+            }).done(function (data) {
+                alert('Success');
             });
         });
-    </script>
-
-    <!-- Для если пройден последний открытый урок можно открыть следующий -->
-    <script>
-        ResultContainer.Functions.SendSuccess = function () {
-            $.ajax({
-                url: '@Url.Action("SuccessLesson", "Lesson")',
-                type: 'post',
-                data: {
-                    id: @LessonId,
-                },
-            });
-        };
     </script>
 }
 else
@@ -200,12 +204,12 @@ else
             var res_int = RobotAPI.CheckResults();
             var res_str = RobotAPI.GetResultString(res_int);
 
+            ResultContainer.Functions.Handle(res_int, res_str);
+
             @if (IsLesson)
             {
                 @:if (res_int == 0) ResultContainer.Functions.SendSuccess();
             }
-
-            ResultContainer.Functions.Handle(res_int, res_str);
         }
 
         RobotAPI.Execute(code, additional_result_check);
