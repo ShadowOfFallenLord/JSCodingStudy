@@ -8,6 +8,11 @@ namespace JSCodingStudy.UserEntities
 {
     public class UserLastLessons
     {
+        public UserLastLessons()
+        {
+            Robot = 1;
+        }
+
         public int Robot { get; set; }
     }
 }
