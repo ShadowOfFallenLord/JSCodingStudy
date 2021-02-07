@@ -10,9 +10,9 @@ namespace JSCodingStudy.DALInterfaces
 {
     public interface IUserCodeDao<LessonType> where LessonType : ILesson
     {
-        bool Add(UserCode code);
-        UserCode GetById(int user_id, int lesson_id);
-        bool Update(UserCode code);
+        bool Add(int user_id, int lesson_id, string code);
+        string GetById(int user_id, int lesson_id);
+        bool Update(int user_id, int lesson_id, string code);
         bool RemoveById(int user_id, int lesson_id);
     }
 }
