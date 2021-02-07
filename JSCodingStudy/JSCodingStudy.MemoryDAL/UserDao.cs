@@ -15,6 +15,14 @@ namespace JSCodingStudy.MemoryDAL
         public UserDao()
         {
             users = new List<User>();
+
+            users.Add(new User
+            {
+                Id = 1,
+                Login = "user1",
+                Password = "123",
+                LastLessons = new UserLastLessons()
+            });
         }
 
         public bool Add(User user)
