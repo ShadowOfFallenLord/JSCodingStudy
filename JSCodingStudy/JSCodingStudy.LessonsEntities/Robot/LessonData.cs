@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace JSCodingStudy.LessonsEntities.Robot
 {
-    public class LessonData : ILesson
+    public class LessonData : BaseLesson
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-
         public string Task { get; }
 
         public string[] Pattern { get; set; }
