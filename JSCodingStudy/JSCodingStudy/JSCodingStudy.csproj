@@ -319,6 +319,12 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JSCodingStudy.NinjectConfig\JSCodingStudy.NinjectConfig.csproj">
+      <Project>{5ad37dda-d189-4223-b896-6703b632717e}</Project>
+      <Name>JSCodingStudy.NinjectConfig</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
