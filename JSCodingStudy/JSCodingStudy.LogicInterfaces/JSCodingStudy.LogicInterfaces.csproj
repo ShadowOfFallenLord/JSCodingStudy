@@ -41,7 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ILessonLogic.cs" />
+    <Compile Include="IUserCodeLogic.cs" />
+    <Compile Include="IUserLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JSCodingStudy.LessonsEntities\JSCodingStudy.LessonsEntities.csproj">
+      <Project>{a1a852a3-2c88-4149-b66f-5b6dfd0fb6fb}</Project>
+      <Name>JSCodingStudy.LessonsEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JSCodingStudy.UserEntities\JSCodingStudy.UserEntities.csproj">
+      <Project>{8d548a19-7796-42a6-b77e-e84eb364c249}</Project>
+      <Name>JSCodingStudy.UserEntities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
