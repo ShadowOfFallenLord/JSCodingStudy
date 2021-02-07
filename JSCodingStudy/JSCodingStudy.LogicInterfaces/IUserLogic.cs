@@ -12,7 +12,6 @@ namespace JSCodingStudy.LogicInterfaces
         bool Add(User user);
         User GetById(int id);
         User GetByLogin(string login);
-        bool Authenticate(string login, string password);
         bool Update(User user);
         bool RemoveById(int id);
     }
