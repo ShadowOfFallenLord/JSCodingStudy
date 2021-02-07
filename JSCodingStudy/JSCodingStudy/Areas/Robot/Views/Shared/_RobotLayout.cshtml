@@ -41,22 +41,26 @@
             <textarea id="code_input" class="form-control text-left h-100 w-100"></textarea>
         </div>
     </div>
-    <div class="col-7 h-100 text-center mt-8 borders">
-        <input type="button" id="run_button" value="Запуск" class="btn btn-primary">
-        <input type="button" id="clear_button" value="Сброс" class="btn btn-primary">
-        <input type="button" id="help_button" value="Помощь" class="btn btn-primary">
-        @Html.ActionLink("Назад", "Index", "Menu", null, new { @class = "btn btn-primary" })
+    <div class="col-7 h-100 text-center borders">
+        <div class="row align-items-center h-100">
+            <div class="col">
+                <input type="button" id="run_button" value="Запуск" class="btn btn-primary">
+                <input type="button" id="clear_button" value="Сброс" class="btn btn-primary">
+                <input type="button" id="help_button" value="Помощь" class="btn btn-primary">
+                @Html.ActionLink("Назад", "Index", "Menu", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
     </div>
 </div>
 
-<div id="help_container" class="position-absolute bg-light borders borders_inside" style="display: none;">
+<div id="help_container" class="position-absolute bg-light p-2 borders borders_inside" style="display: none;">
     <input type="button" id="close_help_button" value="X">
     <ul id="help_text" style="padding: 5px;">
         Справка по командам
     </ul>
 </div>
 
-<div id="result_container" class="position-absolute bg-light borders borders_inside" style="display: none;">
+<div id="result_container" class="position-absolute bg-light p-2 borders borders_inside" style="display: none;">
     <div id="result_message">
         Результат
     </div>
@@ -146,7 +150,7 @@ else
 {
     <!-- Для песочницы нельзя сохранить полученное решение -->
     <script>
-        ResultContainer.Buttons.Save.addClass('hidden');
+        ResultContainer.Buttons.Save.hide();
     </script>
 }
 

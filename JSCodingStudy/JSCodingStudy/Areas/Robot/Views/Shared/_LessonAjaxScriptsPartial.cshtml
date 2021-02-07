@@ -8,7 +8,7 @@
 <!-- Для если пройден последний открытый урок можно открыть следующий -->
 <script>
     (function () {
-        var notice = CreateTempNotice('position-absolute bg-light borders borders_inside', 'Урок пройден!', 'text-success', 'Продолжить', 'btn btn-success');
+        var notice = CreateTempNotice('position-absolute bg-light p-2 borders borders_inside', 'Урок пройден!', 'text-success', 'Продолжить', 'btn btn-success');
         var toggle = PopUpToggleInit(notice, FullBody);
 
         ResultContainer.Functions.SendSuccess = function () {
@@ -31,7 +31,7 @@
 <!-- Для урока можно сохранить полученное решение -->
 <script>
     (function () {
-        var notice = CreateTempNotice('position-absolute bg-light borders borders_inside', 'Код сохранен!', 'text-success', 'Продолжить', 'btn btn-success');
+        var notice = CreateTempNotice('position-absolute bg-light p-2 borders borders_inside', 'Код сохранен!', 'text-success', 'Продолжить', 'btn btn-success');
         var toggle = PopUpToggleInit(notice, FullBody);
 
         ResultContainer.Buttons.Save.click(function () {
