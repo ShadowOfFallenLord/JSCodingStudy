@@ -8,6 +8,8 @@ namespace JSCodingStudy.UserEntities
 {
     public class UserCode
     {
+        public int UserId { get; set; }
+        public int LessonId { get; set; }
         public string Code { get; set; }
     }
 }
