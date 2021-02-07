@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JSCodingStudy.DALInterfaces
 {
-    public interface IUserCodeDao<LessonType> : ILesson
+    public interface IUserCodeDao<LessonType> where LessonType : ILesson
     {
         bool Add(UserCode code);
         UserCode GetById(int user_id, int lesson_id);
