@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSCodingStudy.UserEntities"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSCodingStudy.LessonsEntities", "JSCodingStudy.LessonsEntities\JSCodingStudy.LessonsEntities.csproj", "{A1A852A3-2C88-4149-B66F-5B6DFD0FB6FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSCodingStudy.MemoryDAL", "JSCodingStudy.MemoryDAL\JSCodingStudy.MemoryDAL.csproj", "{A40B2D50-776A-4281-8294-87217A54CA7A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{A1A852A3-2C88-4149-B66F-5B6DFD0FB6FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1A852A3-2C88-4149-B66F-5B6DFD0FB6FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1A852A3-2C88-4149-B66F-5B6DFD0FB6FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A40B2D50-776A-4281-8294-87217A54CA7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A40B2D50-776A-4281-8294-87217A54CA7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A40B2D50-776A-4281-8294-87217A54CA7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A40B2D50-776A-4281-8294-87217A54CA7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{C63AD8DC-2BA1-467D-BD86-EE19F80ED8BC} = {B9F96097-5F48-463F-B4CF-724EC9957DE6}
 		{8D548A19-7796-42A6-B77E-E84EB364C249} = {26606196-5653-4DC3-AFF9-C5275BB9381F}
 		{A1A852A3-2C88-4149-B66F-5B6DFD0FB6FB} = {26606196-5653-4DC3-AFF9-C5275BB9381F}
+		{A40B2D50-776A-4281-8294-87217A54CA7A} = {B9F96097-5F48-463F-B4CF-724EC9957DE6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3774AE57-10B4-4A34-A48A-78242C800F0E}
