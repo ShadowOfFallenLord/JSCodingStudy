@@ -8,7 +8,7 @@ namespace JSCodingStudy.LessonsEntities.Robot
 {
     public class RobotLessonData : BaseLesson
     {
-        public string Task { get; }
+        public string Task { get; set; }
 
         public string[] Pattern { get; set; }
         public int StartX { get; set; }
