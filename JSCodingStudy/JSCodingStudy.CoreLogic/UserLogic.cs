@@ -35,7 +35,7 @@ namespace JSCodingStudy.CoreLogic
 
         public IEnumerable<User> GetAll()
         {
-            return dao.GetAll();
+            return dao.GetAll().ToList();
         }
 
         public bool RemoveById(int id)

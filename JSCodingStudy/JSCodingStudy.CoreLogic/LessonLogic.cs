@@ -28,12 +28,14 @@ namespace JSCodingStudy.CoreLogic
 
         public IEnumerable<LessonType> GetAll()
         {
-            return dao.GetAll();
+            return dao.GetAll().ToList();
         }
 
         public IEnumerable<LessonType> GetAvailable(User user)
         {
-            return dao.GetAll().Where(x => x.Id <= last_lesson(user));
+            return dao.GetAll()
+                .Where(x => x.Id <= last_lesson(user))
+                .ToList();
         }
 
         public LessonType GetById(int id)
