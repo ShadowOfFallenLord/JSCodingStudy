@@ -1,4 +1,4 @@
-﻿using JSCodingStudy.Entities;
+﻿using JSCodingStudy.UserEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

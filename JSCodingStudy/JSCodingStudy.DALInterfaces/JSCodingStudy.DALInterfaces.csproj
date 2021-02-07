@@ -45,5 +45,11 @@
     <Compile Include="IUserDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JSCodingStudy.UserEntities\JSCodingStudy.UserEntities.csproj">
+      <Project>{8d548a19-7796-42a6-b77e-e84eb364c249}</Project>
+      <Name>JSCodingStudy.UserEntities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
