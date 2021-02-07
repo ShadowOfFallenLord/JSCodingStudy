@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSCodingStudy.DALInterfaces
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSCodingStudy.UserEntities", "JSCodingStudy.UserEntities\JSCodingStudy.UserEntities.csproj", "{8D548A19-7796-42A6-B77E-E84EB364C249}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSCodingStudy.Common", "JSCodingStudy.Common\JSCodingStudy.Common.csproj", "{FDC37208-056B-4131-89CD-C09B8ABAE3A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{8D548A19-7796-42A6-B77E-E84EB364C249}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D548A19-7796-42A6-B77E-E84EB364C249}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D548A19-7796-42A6-B77E-E84EB364C249}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDC37208-056B-4131-89CD-C09B8ABAE3A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDC37208-056B-4131-89CD-C09B8ABAE3A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDC37208-056B-4131-89CD-C09B8ABAE3A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDC37208-056B-4131-89CD-C09B8ABAE3A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{B1961D58-D3E4-40AB-A929-C7B04D75A6A7} = {D086F1C4-F5E6-4941-AED2-E4D72F5AB046}
 		{C63AD8DC-2BA1-467D-BD86-EE19F80ED8BC} = {B9F96097-5F48-463F-B4CF-724EC9957DE6}
 		{8D548A19-7796-42A6-B77E-E84EB364C249} = {26606196-5653-4DC3-AFF9-C5275BB9381F}
+		{FDC37208-056B-4131-89CD-C09B8ABAE3A8} = {26606196-5653-4DC3-AFF9-C5275BB9381F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3774AE57-10B4-4A34-A48A-78242C800F0E}
