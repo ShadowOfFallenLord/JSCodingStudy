@@ -1,4 +1,5 @@
-﻿using JSCodingStudy.UserEntities;
+﻿using JSCodingStudy.LessonsEntities;
+using JSCodingStudy.UserEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JSCodingStudy.DALInterfaces
 {
-    public interface IUserCodeDao<LessonType>
+    public interface IUserCodeDao<LessonType> : ILesson
     {
         bool Add(UserCode code);
         UserCode GetById(int user_id, int lesson_id);
