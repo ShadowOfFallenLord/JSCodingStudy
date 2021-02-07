@@ -114,6 +114,9 @@ namespace JSCodingStudy.MemoryDAL.Robot
         public RobotLessonDao()
         {
             lessons = new List<RobotLessonData>();
+            lessons.Add(GenerateLesson1());
+            lessons.Add(GenerateLesson2());
+            lessons.Add(GenerateLesson3());
         }
 
         public bool Add(RobotLessonData lesson)
