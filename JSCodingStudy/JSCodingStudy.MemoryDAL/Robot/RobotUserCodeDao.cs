@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace JSCodingStudy.MemoryDAL.Robot
 {
-    public class RobotUserCodeDao : IUserCodeDao<LessonData>
+    public class RobotUserCodeDao : IUserCodeDao<RobotLessonData>
     {
         private Dictionary<int, Dictionary<int, string>> codes;
 

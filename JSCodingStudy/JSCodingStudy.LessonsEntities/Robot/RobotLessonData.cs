@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JSCodingStudy.LessonsEntities.Robot
 {
-    public class LessonData : BaseLesson
+    public class RobotLessonData : BaseLesson
     {
         public string Task { get; }
 
@@ -14,6 +14,6 @@ namespace JSCodingStudy.LessonsEntities.Robot
         public int StartX { get; set; }
         public int StartY { get; set; }
 
-        public APIHelpReference APIHelp { get; set; }
+        public RobotAPIHelpReference APIHelp { get; set; }
     }
 }

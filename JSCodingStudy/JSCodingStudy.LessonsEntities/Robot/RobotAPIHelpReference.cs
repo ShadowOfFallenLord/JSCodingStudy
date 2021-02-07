@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JSCodingStudy.LessonsEntities.Robot
 {
-    public class APIHelpReference
+    public class RobotAPIHelpReference
     {
         public bool Move { get; set; }
         public bool Check { get; set; }

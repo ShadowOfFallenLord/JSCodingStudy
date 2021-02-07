@@ -10,31 +10,31 @@ using System.Threading.Tasks;
 
 namespace JSCodingStudy.CoreLogic.Robot
 {
-    public class RobotLessonLogic : ILessonLogic<LessonData>
+    public class RobotLessonLogic : ILessonLogic<RobotLessonData>
     {
-        private ILessonDao<LessonData> dao;
+        private ILessonDao<RobotLessonData> dao;
 
-        public RobotLessonLogic(ILessonDao<LessonData> dao)
+        public RobotLessonLogic(ILessonDao<RobotLessonData> dao)
         {
             this.dao = dao;
         }
 
-        public bool Add(LessonData lesson)
+        public bool Add(RobotLessonData lesson)
         {
             return dao.Add(lesson);
         }
 
-        public IEnumerable<LessonData> GetAll()
+        public IEnumerable<RobotLessonData> GetAll()
         {
             return dao.GetAll();
         }
 
-        public IEnumerable<LessonData> GetAvailable(User user)
+        public IEnumerable<RobotLessonData> GetAvailable(User user)
         {
             return dao.GetAll().Where(x => x.Id <= user.LastLessons.Robot);
         }
 
-        public LessonData GetById(int id)
+        public RobotLessonData GetById(int id)
         {
             return dao.GetById(id);
         }
@@ -44,7 +44,7 @@ namespace JSCodingStudy.CoreLogic.Robot
             return dao.RemoveById(id);
         }
 
-        public bool Update(LessonData lesson)
+        public bool Update(RobotLessonData lesson)
         {
             return dao.Update(lesson);
         }

@@ -44,8 +44,8 @@
     <Compile Include="BaseLesson.cs" />
     <Compile Include="ILesson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Robot\APIHelpReference.cs" />
-    <Compile Include="Robot\LessonData.cs" />
+    <Compile Include="Robot\RobotAPIHelpReference.cs" />
+    <Compile Include="Robot\RobotLessonData.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
