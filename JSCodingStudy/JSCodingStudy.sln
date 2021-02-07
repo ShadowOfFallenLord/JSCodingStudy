@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PL", "PL", "{2F3A3C80-A2E4-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{26606196-5653-4DC3-AFF9-C5275BB9381F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BLL", "BLL", "{D086F1C4-F5E6-4941-AED2-E4D72F5AB046}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSCodingStudy.LogicInterfaces", "JSCodingStudy.LogicInterfaces\JSCodingStudy.LogicInterfaces.csproj", "{B1961D58-D3E4-40AB-A929-C7B04D75A6A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,10 @@ Global
 		{464AFBC8-DC64-40B6-B971-C539C3B3D8DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{464AFBC8-DC64-40B6-B971-C539C3B3D8DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{464AFBC8-DC64-40B6-B971-C539C3B3D8DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1961D58-D3E4-40AB-A929-C7B04D75A6A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1961D58-D3E4-40AB-A929-C7B04D75A6A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1961D58-D3E4-40AB-A929-C7B04D75A6A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1961D58-D3E4-40AB-A929-C7B04D75A6A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +40,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{EEEF0B93-0329-4281-A11C-79698E88968A} = {2F3A3C80-A2E4-4E68-B3F4-CA6FF5150C7B}
 		{464AFBC8-DC64-40B6-B971-C539C3B3D8DC} = {26606196-5653-4DC3-AFF9-C5275BB9381F}
+		{B1961D58-D3E4-40AB-A929-C7B04D75A6A7} = {D086F1C4-F5E6-4941-AED2-E4D72F5AB046}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3774AE57-10B4-4A34-A48A-78242C800F0E}
