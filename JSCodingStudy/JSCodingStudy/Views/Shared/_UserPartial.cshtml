@@ -3,13 +3,13 @@
     @if (User.Identity.IsAuthenticated)
     {
         @User.Identity.Name@:!
-        @Html.ActionLink("Выйти", "Logout", "AppUser", null, new { @class = "text-primary" })
+        @Html.ActionLink("Выйти", "Logout", "AppUser", new { area = "" }, new { @class = "text-primary" })
     }
     else
     {
         @:Гость!
-        @Html.ActionLink("Войти", "Login", "AppUser", null, new { @class = "text-primary" })
+        @Html.ActionLink("Войти", "Login", "AppUser", new { area = "" }, new { @class = "text-primary" })
         @:или
-        @Html.ActionLink("Зарегистрироваться", "Register", "AppUser", null, new { @class = "text-primary" })
+        @Html.ActionLink("Зарегистрироваться", "Register", "AppUser", new { area = "" }, new { @class = "text-primary" })
     }
 </h4>
