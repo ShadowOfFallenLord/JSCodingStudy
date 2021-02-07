@@ -25,6 +25,7 @@ namespace JSCodingStudy.MemoryDAL
             }
 
             user.Id = users.Count > 0 ? users.Last().Id + 1 : 1;
+            user.LastLessons = new UserLastLessons();
             users.Add(user);
             return true;
         }
