@@ -13,7 +13,7 @@
 
         ResultContainer.Functions.SendSuccess = function () {
             $.ajax({
-                url: '@Url.Action("SuccessLesson", "Lesson")',
+                url: '@Url.Action("SuccessLesson", "Lessons")',
                 type: 'post',
                 data: {
                     id: @LessonId,
@@ -36,7 +36,7 @@
 
         ResultContainer.Buttons.Save.click(function () {
             $.ajax({
-                url: '@Url.Action("SaveCode", "Lesson")',
+                url: '@Url.Action("SaveCode", "Lessons")',
                 type: 'post',
                 data: {
                     id: @LessonId,
