@@ -9,7 +9,7 @@ using System.Web.Mvc;
 namespace JSCodingStudy.Areas.Robot.Controllers
 {
     [Authorize]
-    public class LessonController : Controller
+    public class LessonsController : Controller
     {
         // GET: Robot/Lesson
         public ActionResult Sandbox()

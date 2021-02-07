@@ -118,7 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\Robot\Controllers\LessonController.cs" />
+    <Compile Include="Areas\Robot\Controllers\LessonsController.cs" />
     <Compile Include="Areas\Robot\Controllers\MenuController.cs" />
     <Compile Include="Areas\Robot\Model\LessonData.cs" />
     <Compile Include="Areas\Robot\RobotAreaRegistration.cs" />
@@ -197,8 +197,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Areas\Robot\Views\Lesson\Sandbox.cshtml" />
-    <Content Include="Areas\Robot\Views\Lesson\Lesson.cshtml" />
+    <Content Include="Areas\Robot\Views\Lessons\Sandbox.cshtml" />
+    <Content Include="Areas\Robot\Views\Lessons\Lesson.cshtml" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />

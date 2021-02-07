@@ -5,12 +5,12 @@
 }
 
 
-@Html.ActionLink("- Песочница", "Sandbox", "Lesson", null, new { @class = "btn btn-light" })
+@Html.ActionLink("- Песочница", "Sandbox", "Lessons", null, new { @class = "btn btn-light" })
 <br />
 @foreach (LessonInfo info in Model)
 {
     string title = $"- Урок {info.Id} - {info.Title}";
-    @Html.ActionLink(title, "Lesson", "Lesson", new { id = info.Id }, new { @class = "btn btn-light" })
+    @Html.ActionLink(title, "Lesson", "Lessons", new { id = info.Id }, new { @class = "btn btn-light" })
     <br />
 }
 
