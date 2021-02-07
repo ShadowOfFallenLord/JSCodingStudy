@@ -8,40 +8,40 @@
 <link rel="stylesheet" href="~/Content/RobotStyles/Styles.css" type="text/css" />
 
 <div class="row align-items-start borders" id="page_top_row">
-    <div class="col-lg-5 borders">
+    <div class="col-5 borders">
         <div id="robot_display" class="display_table" align="center">
             display
         </div>
     </div>
-    <div class="col-lg-7 full_height borders">
+    <div class="col-7 h-100 borders">
         <div class="row borders">
-            <div class="col-lg-4 borders">
+            <div class="col-4 borders">
                 Действия:
             </div>
-            <div class="col-lg-8 borders">
+            <div class="col-8 borders">
                 Задание:
             </div>
         </div>
-        <div class="row full_height borders">
-            <div class="col-lg-4 full_height borders">
-                <textarea id="log_display" readonly="true" class="form-control"></textarea>
+        <div class="row h-100 borders">
+            <div class="col-4 h-100 borders">
+                <textarea id="log_display" readonly="true" class="form-control h-100 w-100"></textarea>
             </div>
-            <div class="col-lg-8 full_height borders">
+            <div class="col-8 h-100 borders">
                 @RenderSection("task", required: true)
             </div>
         </div>
     </div>
 </div>
 <div class="row align-items-center borders" id="page_bottom_row">
-    <div class="col-lg-5 full_height borders">
+    <div class="col-5 h-100 borders">
         <div class="borders">
             Код:
         </div>
-        <div class="borders full_height">
-            <textarea id="code_input" class="form-control text-left"></textarea>
+        <div class="borders h-100">
+            <textarea id="code_input" class="form-control text-left h-100 w-100"></textarea>
         </div>
     </div>
-    <div class="col-lg-7 full_height text-center button_container borders">
+    <div class="col-7 h-100 text-center mt-8 borders">
         <input type="button" id="run_button" value="Запуск" class="btn btn-primary">
         <input type="button" id="clear_button" value="Сброс" class="btn btn-primary">
         <input type="button" id="help_button" value="Помощь" class="btn btn-primary">
@@ -49,14 +49,14 @@
     </div>
 </div>
 
-<div id="help_container" class="popup_container borders borders_inside" style="display: none;">
+<div id="help_container" class="position-absolute bg-light borders borders_inside" style="display: none;">
     <input type="button" id="close_help_button" value="X">
     <ul id="help_text" style="padding: 5px;">
         Справка по командам
     </ul>
 </div>
 
-<div id="result_container" class="popup_container borders borders_inside" style="display: none;">
+<div id="result_container" class="position-absolute bg-light borders borders_inside" style="display: none;">
     <div id="result_message">
         Результат
     </div>

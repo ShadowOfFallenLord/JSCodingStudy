@@ -13,26 +13,24 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script>var FullBody = $('body');</script>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-expand navbar-dark bg-dark">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-1"></div>
-                <div class="col-lg-5 text-left">
+            <div class="row w-100">
+                <div class="col-6 text-left">
                     @Html.ActionLink("JSCodingStudy", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 </div>
-                <div class="col-lg-5 text-right">
+                <div class="col-6 text-right">
                     @Html.Partial("_UserPartial")
                 </div>
-                <div class="col-lg-1"></div>
             </div>
         </div>
     </div>
 
-    <div class="container body-content full_height">
-        <div class="container" id="main_page_container">
+    <div class="container body-content">
+        <div id="main_page_container">
             @RenderBody()
         </div>
-        <hr />
+        <hr id="lampc" />
         <footer>
             <p>&copy; Алексей Петров, 2020-2021</p>
         </footer>
@@ -41,11 +39,19 @@
     <script>
         (function () {
             (function () {
+                var mpc = $('#main_page_container');
+                var nxt = $('#lampc');
                 var navbar = $('.navbar');
                 var footer = $('footer');
-                var height = FullBody.height() - navbar.height() - footer.height();
 
-                $('#main_page_container').height(height);
+                var fbh = FullBody.outerHeight(true);
+                var nbh = navbar.outerHeight(true);
+                var fh = footer.outerHeight(true)
+                var nh = nxt.outerHeight(true);
+
+                var height = fbh - nbh - fh - nh;
+
+                mpc.height(height);
             })();
         })();
     </script>
