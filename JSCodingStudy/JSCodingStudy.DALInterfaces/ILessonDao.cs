@@ -9,10 +9,10 @@ namespace JSCodingStudy.DALInterfaces
 {
     public interface ILessonDao<LessonType> where LessonType : ILesson
     {
-        bool Add(LessonType user);
+        bool Add(LessonType lesson);
         LessonType GetById(int id);
         IEnumerable<LessonType> GetAll();
-        bool Update(LessonType user);
+        bool Update(LessonType lesson);
         bool RemoveById(int id);
     }
 }
