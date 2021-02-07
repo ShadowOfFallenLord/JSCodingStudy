@@ -20,22 +20,38 @@ namespace JSCodingStudy.MemoryDAL.Robot
 
         public bool Add(int user_id, int lesson_id, string code)
         {
-            throw new NotImplementedException();
+            if(CheckHas(user_id, lesson_id))
+            {
+                return false;
+            }
+
+            this[user_id, lesson_id] = code;
+            return true;
         }
 
         public string GetById(int user_id, int lesson_id)
         {
-            throw new NotImplementedException();
+            return this[user_id, lesson_id];
         }
 
         public bool RemoveById(int user_id, int lesson_id)
         {
-            throw new NotImplementedException();
+            if (CheckHas(user_id, lesson_id))
+            {
+                this[user_id, lesson_id] = "";
+                return true;
+            };
+            return false;
         }
 
         public bool Update(int user_id, int lesson_id, string code)
         {
-            throw new NotImplementedException();
+            if (CheckHas(user_id, lesson_id))
+            {
+                this[user_id, lesson_id] = code;
+                return true;
+            };
+            return false;
         }
 
         private string this[int user_id, int lesson_id]
