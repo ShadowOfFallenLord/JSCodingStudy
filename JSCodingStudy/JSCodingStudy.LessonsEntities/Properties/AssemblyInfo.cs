@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанные со сборкой.
-[assembly: AssemblyTitle("JSCodingStudy.Common")]
+[assembly: AssemblyTitle("JSCodingStudy.LessonsEntities")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("JSCodingStudy.Common")]
+[assembly: AssemblyProduct("JSCodingStudy.LessonsEntities")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("fdc37208-056b-4131-89cd-c09b8abae3a8")]
+[assembly: Guid("a1a852a3-2c88-4149-b66f-5b6dfd0fb6fb")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //

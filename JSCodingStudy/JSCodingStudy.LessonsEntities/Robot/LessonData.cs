@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JSCodingStudy.Entities.Robot
+namespace JSCodingStudy.LessonsEntities.Robot
 {
-    public class LessonData : LessonInfo
+    public class LessonData : ILesson
     {
-        public string Task { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+
+        public string Task { get; }
 
         public string[] Pattern { get; set; }
         public int StartX { get; set; }
