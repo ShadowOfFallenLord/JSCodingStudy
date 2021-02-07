@@ -40,11 +40,16 @@ namespace JSCodingStudy.MemoryDAL
             return users.FirstOrDefault(x => x.Login == login);
         }
 
+        public IEnumerable<User> GetAll()
+        {
+            return users.Select(x => x);
+        }
+
         public bool RemoveById(int id)
         {
             User user = GetById(id);
 
-            if(user is null)
+            if (user is null)
             {
                 return false;
             }
@@ -56,7 +61,7 @@ namespace JSCodingStudy.MemoryDAL
         {
             int index = users.FindIndex(x => x.Id == user.Id);
 
-            if(index < 0)
+            if (index < 0)
             {
                 return false;
             }

@@ -33,6 +33,11 @@ namespace JSCodingStudy.CoreLogic
             return dao.GetByLogin(login);
         }
 
+        public IEnumerable<User> GetAll()
+        {
+            return dao.GetAll();
+        }
+
         public bool RemoveById(int id)
         {
             return dao.RemoveById(id);
