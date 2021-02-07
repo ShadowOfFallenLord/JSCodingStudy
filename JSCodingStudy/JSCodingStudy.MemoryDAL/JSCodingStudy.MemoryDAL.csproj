@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Robot\RobotLessonDao.cs" />
+    <Compile Include="Robot\RobotUserCodeDao.cs" />
     <Compile Include="UserDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
