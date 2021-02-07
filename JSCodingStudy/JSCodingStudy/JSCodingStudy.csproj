@@ -320,9 +320,21 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JSCodingStudy.LessonsEntities\JSCodingStudy.LessonsEntities.csproj">
+      <Project>{a1a852a3-2c88-4149-b66f-5b6dfd0fb6fb}</Project>
+      <Name>JSCodingStudy.LessonsEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JSCodingStudy.LogicInterfaces\JSCodingStudy.LogicInterfaces.csproj">
+      <Project>{b1961d58-d3e4-40ab-a929-c7b04d75a6a7}</Project>
+      <Name>JSCodingStudy.LogicInterfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JSCodingStudy.NinjectConfig\JSCodingStudy.NinjectConfig.csproj">
       <Project>{5ad37dda-d189-4223-b896-6703b632717e}</Project>
       <Name>JSCodingStudy.NinjectConfig</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JSCodingStudy.UserEntities\JSCodingStudy.UserEntities.csproj">
+      <Project>{8d548a19-7796-42a6-b77e-e84eb364c249}</Project>
+      <Name>JSCodingStudy.UserEntities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

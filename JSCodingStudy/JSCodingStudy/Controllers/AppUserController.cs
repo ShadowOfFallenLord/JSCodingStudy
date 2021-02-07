@@ -1,4 +1,5 @@
-﻿using JSCodingStudy.Models;
+﻿using JSCodingStudy.LogicInterfaces;
+using JSCodingStudy.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,25 @@ namespace JSCodingStudy.Controllers
 {
     public class AppUserController : Controller
     {
+        private IUserLogic logic;
+
+        public AppUserController(IUserLogic logic)
+        {
+            this.logic = logic;
+        }
+
         // GET: AppUser
         public ActionResult Index()
         {
-            IEnumerable<AppUserData> users = AppUserDaoMoq.GetAll();
+            IEnumerable<AppUserData> users = logic
+                .GetAll()
+                .Select(x => new AppUserData
+                {
+                    Id = x.Id,
+                    Login = x.Login,
+                    Password = x.Password,
+                    LastRobotLesson = x.LastLessons.Robot
+                });
             return View(users);
         }
 
@@ -26,22 +42,27 @@ namespace JSCodingStudy.Controllers
         [HttpPost]
         public ActionResult Register([Bind(Include = "Login, Password")] AppUserData model)
         {
-            if (AppUserDaoMoq.HasCheck(model.Login))
-            {
-                ModelState.AddModelError("Login", "User alredy exist");
-                return View(model);
-            }
-
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("", "Bad login/password");
                 return View(model);
             }
 
-            AppUserData user = AppUserDaoMoq.Add(model.Login, model.Password);
-            FormsAuthentication.SetAuthCookie(user.Login, true);
+            UserEntities.User user = new UserEntities.User
+            {
+                Login = model.Login,
+                Password = model.Password
+            };
 
-            return RedirectToAction("Index", "Home");
+            if (logic.Add(user))
+            {
+                FormsAuthentication.SetAuthCookie(user.Login, true);
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            ModelState.AddModelError("Login", "User alredy exist");
+            return View(model);
         }
         #endregion
 
@@ -60,10 +81,16 @@ namespace JSCodingStudy.Controllers
                 return View(model);
             }
 
-            AppUserData user = AppUserDaoMoq.Find(model.Login, model.Password);
+            UserEntities.User user = logic.GetByLogin(model.Login);
             if (user is null)
             {
                 ModelState.AddModelError("Login", "Unknown login");
+                return View(model);
+            }
+
+            if(user.Password != model.Password)
+            {
+                ModelState.AddModelError("Login", "Bad password");
                 return View(model);
             }
 
