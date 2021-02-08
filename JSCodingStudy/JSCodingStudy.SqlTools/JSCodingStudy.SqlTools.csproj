@@ -50,6 +50,7 @@
     <Compile Include="Commands\HandleStrategy\IHandleStrategy.cs" />
     <Compile Include="Commands\HandleStrategy\NonQueryHandleStrategy.cs" />
     <Compile Include="Commands\HandleStrategy\QueryHandleStrategy.cs" />
+    <Compile Include="Commands\HandleStrategy\ScalarHandleStrategy.cs" />
     <Compile Include="ORM\BaseORM.cs" />
     <Compile Include="ORM\Handlers\MultiTypeHandler.cs" />
     <Compile Include="ORM\Handlers\PropertyHandler.cs" />

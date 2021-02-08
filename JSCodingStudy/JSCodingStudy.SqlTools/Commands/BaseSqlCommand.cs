@@ -92,5 +92,12 @@ namespace JSCodingStudy.SqlTools.Commands
             Execute(strategy);
             return strategy.Result;
         }
+
+        public object ExecuteScalar()
+        {
+            ScalarHandleStrategy strategy = new ScalarHandleStrategy();
+            Execute(strategy);
+            return strategy.Result;
+        }
     }
 }
