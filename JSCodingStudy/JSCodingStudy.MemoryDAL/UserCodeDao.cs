@@ -33,16 +33,6 @@ namespace JSCodingStudy.MemoryDAL
             return this[user_id, lesson_id];
         }
 
-        public bool RemoveById(int user_id, int lesson_id)
-        {
-            if (CheckHas(user_id, lesson_id))
-            {
-                this[user_id, lesson_id] = "";
-                return true;
-            };
-            return false;
-        }
-
         public bool Update(int user_id, int lesson_id, string code)
         {
             if (CheckHas(user_id, lesson_id))
