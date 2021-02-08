@@ -41,12 +41,9 @@ namespace JSCodingStudy.MemoryDAL.Robot
                 StartX = 1,
                 StartY = 2,
 
-                APIHelp = new RobotAPIHelpReference
-                {
-                    Move = true,
-                    Check = false,
-                    Draw = false,
-                }
+                HelpAPIMove = true,
+                HelpAPICheck = false,
+                HelpAPIDraw = false,
             };
         }
 
@@ -74,12 +71,9 @@ namespace JSCodingStudy.MemoryDAL.Robot
                 StartX = 2,
                 StartY = 2,
 
-                APIHelp = new RobotAPIHelpReference
-                {
-                    Move = true,
-                    Check = false,
-                    Draw = false,
-                },
+                HelpAPIMove = true,
+                HelpAPICheck = false,
+                HelpAPIDraw = false,
             };
         }
 
@@ -107,12 +101,9 @@ namespace JSCodingStudy.MemoryDAL.Robot
                 StartX = 1,
                 StartY = 3,
 
-                APIHelp = new RobotAPIHelpReference
-                {
-                    Move = true,
-                    Check = false,
-                    Draw = false,
-                },
+                HelpAPIMove = true,
+                HelpAPICheck = false,
+                HelpAPIDraw = false,
             };
         }
     }

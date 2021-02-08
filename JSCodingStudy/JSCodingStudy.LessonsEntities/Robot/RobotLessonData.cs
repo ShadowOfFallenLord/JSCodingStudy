@@ -14,6 +14,10 @@ namespace JSCodingStudy.LessonsEntities.Robot
         public int StartX { get; set; }
         public int StartY { get; set; }
 
-        public RobotAPIHelpReference APIHelp { get; set; }
+        public bool HelpAPIMove { get; set; }
+        public bool HelpAPICheck { get; set; }
+        public bool HelpAPIDraw { get; set; }
+
+        public RobotAPIHelpReference APIHelpAPI { get; set; }
     }
 }

@@ -48,9 +48,9 @@ namespace JSCodingStudy.Areas.Robot.Controllers
                 StartY = data.StartY,
                 APIHelp = new APIReference
                 {
-                    Move = data.APIHelp.Move,
-                    Check = data.APIHelp.Check,
-                    Draw = data.APIHelp.Draw,
+                    Move = data.HelpAPIMove,
+                    Check = data.HelpAPICheck,
+                    Draw = data.HelpAPIDraw,
                 },
                 Code = code
             };
