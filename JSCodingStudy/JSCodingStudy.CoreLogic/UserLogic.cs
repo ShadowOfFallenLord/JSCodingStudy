@@ -43,9 +43,9 @@ namespace JSCodingStudy.CoreLogic
             return dao.RemoveById(id);
         }
 
-        public bool Update(User user)
+        public bool UpdateLessons(User user)
         {
-            return dao.Update(user);
+            return dao.UpdateLessons(user);
         }
     }
 }

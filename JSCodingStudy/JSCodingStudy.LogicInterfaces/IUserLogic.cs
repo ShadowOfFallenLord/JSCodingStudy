@@ -13,7 +13,7 @@ namespace JSCodingStudy.LogicInterfaces
         User GetById(int id);
         User GetByLogin(string login);
         IEnumerable<User> GetAll();
-        bool Update(User user);
+        bool UpdateLessons(User user);
         bool RemoveById(int id);
     }
 }

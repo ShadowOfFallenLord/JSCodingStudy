@@ -67,7 +67,7 @@ namespace JSCodingStudy.Areas.Robot.Controllers
             if(user.RobotLastLesson == id)
             {
                 user.RobotLastLesson++;
-                user_logic.Update(user);
+                user_logic.UpdateLessons(user);
                 flag = true;
             }
 

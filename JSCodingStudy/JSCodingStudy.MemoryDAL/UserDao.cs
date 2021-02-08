@@ -65,7 +65,7 @@ namespace JSCodingStudy.MemoryDAL
             return users.Remove(user);
         }
 
-        public bool Update(User user)
+        public bool UpdateLessons(User user)
         {
             int index = users.FindIndex(x => x.Id == user.Id);
 
@@ -74,7 +74,7 @@ namespace JSCodingStudy.MemoryDAL
                 return false;
             }
 
-            users[index] = user;
+            users[index].RobotLastLesson = user.RobotLastLesson;
             return true;
         }
     }
