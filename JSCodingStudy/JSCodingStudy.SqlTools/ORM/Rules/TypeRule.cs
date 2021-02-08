@@ -44,5 +44,7 @@ namespace JSCodingStudy.SqlTools.ORM.Rules
         protected void AddBoolProperty(string property_name, string column_name) => AddProperty(property_name, column_name, CastersKeeper.CasterToBool);
 
         protected void AddNullableBoolProperty(string property_name, string column_name) => AddProperty(property_name, column_name, CastersKeeper.CasterToNullableBool);
+
+        protected void AddXElementProperty(string property_name, string column_name) => AddProperty(property_name, column_name, CastersKeeper.CasterToXElement);
     }
 }

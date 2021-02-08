@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace JSCodingStudy.SqlTools.ORM.TypeCasting
 {
@@ -64,6 +65,14 @@ namespace JSCodingStudy.SqlTools.ORM.TypeCasting
         public override object Cast(object obj)
         {
             return base.Cast(obj) ?? false;
+        }
+    }
+
+    public class CasterToXElement : AbstractCaster
+    {
+        public override object Cast(object obj)
+        {
+            return obj as XElement;
         }
     }
 }

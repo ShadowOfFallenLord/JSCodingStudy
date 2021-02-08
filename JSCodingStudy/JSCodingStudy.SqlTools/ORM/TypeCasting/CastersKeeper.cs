@@ -21,5 +21,7 @@ namespace JSCodingStudy.SqlTools.ORM.TypeCasting
         public static CasterToNullableBool CasterToNullableBool { get; private set; } = new CasterToNullableBool();
 
         public static CasterToBool CasterToBool { get; private set; } = new CasterToBool();
+
+        public static CasterToXElement CasterToXElement { get; private set; } = new CasterToXElement();
     }
 }
