@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LessonDao.cs" />
     <Compile Include="UserCodeDao.cs" />
     <Compile Include="Robot\RobotLessonDao.cs" />
     <Compile Include="UserDao.cs" />
