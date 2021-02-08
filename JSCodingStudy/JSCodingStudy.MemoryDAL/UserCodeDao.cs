@@ -1,26 +1,25 @@
 ﻿using JSCodingStudy.DALInterfaces;
-using JSCodingStudy.LessonsEntities.Robot;
-using JSCodingStudy.UserEntities;
+using JSCodingStudy.LessonsEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JSCodingStudy.MemoryDAL.Robot
+namespace JSCodingStudy.MemoryDAL
 {
-    public class RobotUserCodeDao : IUserCodeDao<RobotLessonData>
+    public class UserCodeDao<LessonType> : IUserCodeDao<LessonType> where LessonType : ILesson
     {
         private Dictionary<int, Dictionary<int, string>> codes;
 
-        public RobotUserCodeDao()
+        public UserCodeDao()
         {
             codes = new Dictionary<int, Dictionary<int, string>>();
         }
 
         public bool Add(int user_id, int lesson_id, string code)
         {
-            if(CheckHas(user_id, lesson_id))
+            if (CheckHas(user_id, lesson_id))
             {
                 return false;
             }

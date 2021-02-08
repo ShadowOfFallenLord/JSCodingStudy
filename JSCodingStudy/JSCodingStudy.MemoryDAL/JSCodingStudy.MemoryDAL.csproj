@@ -41,8 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UserCodeDao.cs" />
     <Compile Include="Robot\RobotLessonDao.cs" />
-    <Compile Include="Robot\RobotUserCodeDao.cs" />
     <Compile Include="UserDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
