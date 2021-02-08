@@ -6,13 +6,6 @@ using System.Web;
 
 namespace JSCodingStudy.Areas.Robot.Model
 {
-    public class APIReference
-    {
-        public bool Move { get; set; }
-        public bool Check { get; set; }
-        public bool Draw { get; set; }
-    }
-
     public class LessonData : LessonInfo
     {
         public string Task { get; set; }
@@ -21,7 +14,9 @@ namespace JSCodingStudy.Areas.Robot.Model
         public int StartX { get; set; }
         public int StartY { get; set; }
 
-        public APIReference APIHelp { get; set; }
+        public bool HelpAPIMove { get; set; }
+        public bool HelpAPICheck { get; set; }
+        public bool HelpAPIDraw { get; set; }
 
         public string Code { get; set; }
     }

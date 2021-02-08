@@ -42,16 +42,16 @@ namespace JSCodingStudy.Areas.Robot.Controllers
             {
                 Id = data.Id,
                 Title = data.Title,
+
                 Task = data.Task,
                 Pattern = data.Pattern,
                 StartX = data.StartX,
                 StartY = data.StartY,
-                APIHelp = new APIReference
-                {
-                    Move = data.HelpAPIMove,
-                    Check = data.HelpAPICheck,
-                    Draw = data.HelpAPIDraw,
-                },
+
+                HelpAPIMove = data.HelpAPIMove,
+                HelpAPICheck = data.HelpAPICheck,
+                HelpAPIDraw = data.HelpAPIDraw,
+
                 Code = code
             };
 
