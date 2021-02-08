@@ -8,7 +8,7 @@ namespace JSCodingStudy.LessonsEntities
 {
     public interface ILesson
     {
-        int Id { get; }
-        string Title { get; }
+        int Id { get; set; }
+        string Title { get; set; }
     }
 }
