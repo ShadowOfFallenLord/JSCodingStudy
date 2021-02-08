@@ -13,6 +13,6 @@ namespace JSCodingStudy.UserEntities
         public string Login { get; set; }
         public string Password { get; set; }
 
-        public UserLastLessons LastLessons { get; set; }
+        public int RobotLastLesson { get; set; } = 1;
     }
 }

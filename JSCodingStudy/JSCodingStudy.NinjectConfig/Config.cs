@@ -47,7 +47,7 @@ namespace JSCodingStudy.NinjectConfig
                 .Bind<LogicInterfaces.ILessonLogic<RobotLessonData>>()
                 .To<CoreLogic.LessonLogic<RobotLessonData>>()
                 .InSingletonScope()
-                .WithConstructorArgument("last_lesson", (Func<User, int>)(x => x.LastLessons.Robot));
+                .WithConstructorArgument("last_lesson", (Func<User, int>)(x => x.RobotLastLesson));
         }
 
         private static void BindUserCodes(IKernel kernel)

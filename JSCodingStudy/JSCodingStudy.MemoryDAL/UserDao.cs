@@ -21,7 +21,7 @@ namespace JSCodingStudy.MemoryDAL
                 Id = 1,
                 Login = "user1",
                 Password = "123",
-                LastLessons = new UserLastLessons()
+                RobotLastLesson = 1,
             });
         }
 
@@ -33,7 +33,7 @@ namespace JSCodingStudy.MemoryDAL
             }
 
             user.Id = users.Count > 0 ? users.Last().Id + 1 : 1;
-            user.LastLessons = new UserLastLessons();
+            user.RobotLastLesson = 1;
             users.Add(user);
             return true;
         }

@@ -28,7 +28,7 @@ namespace JSCodingStudy.Controllers
                     Id = x.Id,
                     Login = x.Login,
                     Password = x.Password,
-                    LastRobotLesson = x.LastLessons.Robot
+                    LastRobotLesson = x.RobotLastLesson
                 });
             return View(users);
         }

@@ -64,9 +64,9 @@ namespace JSCodingStudy.Areas.Robot.Controllers
             UserEntities.User user = user_logic.GetByLogin(HttpContext.User.Identity.Name);
             bool flag = false;
 
-            if(user.LastLessons.Robot == id)
+            if(user.RobotLastLesson == id)
             {
-                user.LastLessons.Robot++;
+                user.RobotLastLesson++;
                 user_logic.Update(user);
                 flag = true;
             }
