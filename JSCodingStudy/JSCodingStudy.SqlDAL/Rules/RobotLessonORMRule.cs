@@ -20,9 +20,9 @@ namespace JSCodingStudy.SqlDAL.Rules
             //AddStringProperty(nameof(item.Pattern), "Pattern");
             AddIntProperty(nameof(item.StartX), "StartX");
             AddIntProperty(nameof(item.StartY), "StartY");
-            //AddIntProperty(nameof(item.HelpAPIMove), "HelpAPIMove");
-            //AddIntProperty(nameof(item.HelpAPICheck), "HelpAPICheck");
-            //AddIntProperty(nameof(item.HelpAPIDraw), "HelpAPIDraw");
+            AddBoolProperty(nameof(item.HelpAPIMove), "HelpAPIMove");
+            AddBoolProperty(nameof(item.HelpAPICheck), "HelpAPICheck");
+            AddBoolProperty(nameof(item.HelpAPIDraw), "HelpAPIDraw");
         }
 
         public static RobotLessonORMRule Instance { get; } = new RobotLessonORMRule();
