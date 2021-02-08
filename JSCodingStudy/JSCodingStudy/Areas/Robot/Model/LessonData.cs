@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JSCodingStudy.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,13 +11,6 @@ namespace JSCodingStudy.Areas.Robot.Model
         public bool Move { get; set; }
         public bool Check { get; set; }
         public bool Draw { get; set; }
-    }
-
-    public class LessonInfo
-    {
-        public int Id { get; set; }
-
-        public string Title { get; set; }
     }
 
     public class LessonData : LessonInfo
