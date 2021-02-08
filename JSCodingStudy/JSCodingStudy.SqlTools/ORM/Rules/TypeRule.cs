@@ -40,5 +40,9 @@ namespace JSCodingStudy.SqlTools.ORM.Rules
         protected void AddNullableDateTimeProperty(string property_name, string column_name) => AddProperty(property_name, column_name, CastersKeeper.CasterToNullableDateTime);
 
         protected void AddStringProperty(string property_name, string column_name) => AddProperty(property_name, column_name, CastersKeeper.CasterToString);
+
+        protected void AddBoolProperty(string property_name, string column_name) => AddProperty(property_name, column_name, CastersKeeper.CasterToBool);
+
+        protected void AddNullableBoolProperty(string property_name, string column_name) => AddProperty(property_name, column_name, CastersKeeper.CasterToNullableBool);
     }
 }

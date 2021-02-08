@@ -50,4 +50,20 @@ namespace JSCodingStudy.SqlTools.ORM.TypeCasting
             return obj as string;
         }
     }
+
+    public class CasterToNullableBool : AbstractCaster
+    {
+        public override object Cast(object obj)
+        {
+            return obj as bool?;
+        }
+    }
+
+    public class CasterToBool : CasterToNullableBool
+    {
+        public override object Cast(object obj)
+        {
+            return base.Cast(obj) ?? false;
+        }
+    }
 }

@@ -17,5 +17,9 @@ namespace JSCodingStudy.SqlTools.ORM.TypeCasting
         public static CasterToDateTime CasterToDateTime { get; private set; } = new CasterToDateTime();
 
         public static CasterToString CasterToString { get; private set; } = new CasterToString();
+
+        public static CasterToNullableBool CasterToNullableBool { get; private set; } = new CasterToNullableBool();
+
+        public static CasterToBool CasterToBool { get; private set; } = new CasterToBool();
     }
 }
