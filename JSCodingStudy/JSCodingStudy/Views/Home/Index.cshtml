@@ -4,23 +4,3 @@
 }
 
 @Html.ActionLink("- Робот", "Index", "Menu", new { area = "Robot"}, new { @class = "text-primary" })
-
-<script src="~/Scripts/Other/ElementsFactory.js"></script>
-
-<script>
-    var builder = CreateSpecificationBuilder();
-
-    var btn = builder.Clear()
-        .SetTag('input')
-        .SetValue('btn')
-        .SetAttrebut('type', 'button')
-        .SetAttrebut('class', 'btn btn-primary')
-        .SetEvent('click', function (o) {
-            return function () {
-                o.hide();
-            }
-        })
-        .Parse();
-    $('#main_page_container').append(btn);
-
-</script>
