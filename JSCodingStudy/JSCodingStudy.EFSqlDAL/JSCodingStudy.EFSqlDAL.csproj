@@ -66,15 +66,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UserModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Users.cs">
-      <DependentUpon>UserModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Users_GetById_Result.cs">
-      <DependentUpon>UserModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Users_GetByLogin_Result.cs">
-      <DependentUpon>UserModel.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

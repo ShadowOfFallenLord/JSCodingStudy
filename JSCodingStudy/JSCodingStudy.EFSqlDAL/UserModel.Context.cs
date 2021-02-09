@@ -14,7 +14,8 @@ namespace JSCodingStudy.EFSqlDAL
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+    using JSCodingStudy.UserEntities;
+
     public partial class Entities : DbContext
     {
         public Entities()
@@ -27,7 +28,7 @@ namespace JSCodingStudy.EFSqlDAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     
         public virtual int Users_Add(string login, string password)
         {
@@ -42,22 +43,22 @@ namespace JSCodingStudy.EFSqlDAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Users_Add", loginParameter, passwordParameter);
         }
     
-        public virtual ObjectResult<Users_GetById_Result> Users_GetById(Nullable<int> id)
+        public virtual ObjectResult<User> Users_GetById(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
                 new ObjectParameter("id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Users_GetById_Result>("Users_GetById", idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<User>("Users_GetById", idParameter);
         }
     
-        public virtual ObjectResult<Users_GetByLogin_Result> Users_GetByLogin(string login)
+        public virtual ObjectResult<User> Users_GetByLogin(string login)
         {
             var loginParameter = login != null ?
                 new ObjectParameter("login", login) :
                 new ObjectParameter("login", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Users_GetByLogin_Result>("Users_GetByLogin", loginParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<User>("Users_GetByLogin", loginParameter);
         }
     
         public virtual int Users_UpdateLessons(Nullable<int> id, Nullable<int> robot_last_lesson)
