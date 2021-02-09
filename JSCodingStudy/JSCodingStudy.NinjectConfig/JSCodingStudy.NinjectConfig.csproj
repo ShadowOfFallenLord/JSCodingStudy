@@ -59,6 +59,10 @@
       <Project>{c63ad8dc-2ba1-467d-bd86-ee19f80ed8bc}</Project>
       <Name>JSCodingStudy.DALInterfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JSCodingStudy.EFSqlDAL\JSCodingStudy.EFSqlDAL.csproj">
+      <Project>{195b83a9-1dc9-41a2-9aeb-bc5e8f751829}</Project>
+      <Name>JSCodingStudy.EFSqlDAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JSCodingStudy.LessonsEntities\JSCodingStudy.LessonsEntities.csproj">
       <Project>{a1a852a3-2c88-4149-b66f-5b6dfd0fb6fb}</Project>
       <Name>JSCodingStudy.LessonsEntities</Name>
