@@ -102,5 +102,19 @@
       <LastGenOutput>UserModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JSCodingStudy.DALInterfaces\JSCodingStudy.DALInterfaces.csproj">
+      <Project>{c63ad8dc-2ba1-467d-bd86-ee19f80ed8bc}</Project>
+      <Name>JSCodingStudy.DALInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JSCodingStudy.LessonsEntities\JSCodingStudy.LessonsEntities.csproj">
+      <Project>{a1a852a3-2c88-4149-b66f-5b6dfd0fb6fb}</Project>
+      <Name>JSCodingStudy.LessonsEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JSCodingStudy.UserEntities\JSCodingStudy.UserEntities.csproj">
+      <Project>{8d548a19-7796-42a6-b77e-e84eb364c249}</Project>
+      <Name>JSCodingStudy.UserEntities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
