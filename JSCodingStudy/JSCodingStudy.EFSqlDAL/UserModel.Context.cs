@@ -16,9 +16,9 @@ namespace JSCodingStudy.EFSqlDAL
     using System.Linq;
     using JSCodingStudy.UserEntities;
 
-    public partial class Entities : DbContext
+    public partial class UsersDbContext : DbContext
     {
-        public Entities()
+        public UsersDbContext()
             : base("name=Entities")
         {
         }
