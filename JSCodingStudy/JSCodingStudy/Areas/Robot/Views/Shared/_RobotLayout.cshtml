@@ -53,13 +53,6 @@
     </div>
 </div>
 
-<div id="help_container" class="position-absolute bg-light p-2 borders borders_inside" style="display: none;">
-    <input type="button" id="close_help_button" value="X">
-    <ul id="help_text" style="padding: 5px;">
-        Справка по командам
-    </ul>
-</div>
-
 <div id="result_container" class="position-absolute bg-light p-2 borders borders_inside" style="display: none;">
     <div id="result_message">
         Результат
@@ -91,33 +84,45 @@
 
 <!-- Подтягивание API переключателя всплывающих окошек -->
 <script src="~/Scripts/Other/PopUpContainerToggle.js"></script>
-
+<!-- Подтягивание API генерирования элементов -->
 <script src="~/Scripts/Other/ElementsBuilder.js"></script>
 
-<script>
-    var builder = CreateSpecificationBuilder();
-</script>
-
-<!-- Открытие/закрытие окошка помощи -->
-<script>
-    (function () {
-        var HelpContainer = $('#help_container');
-
-        var toggle = PopUpToggleInit(HelpContainer, FullBody);
-
-        $('#close_help_button').click(toggle.Hide);
-        html_elements.Buttons.HelpButton.click(toggle.ShowInCenter);
-    })();
-</script>
-
-<!-- Содержимое окошка помощи -->
+<!-- Окошко помощи -->
 <script type="module">
     import * as RAPI from '@Url.Content("~/Scripts/Robot/RobotAPI/GeneralRobotAPI.js")';
-    var help = RAPI.GetHelpAPI();
-    var help_test = $('#help_text');
+    (function () {
+        var help = RAPI.GetHelpAPI();
+        @RenderSection("help")
 
-    @RenderSection("help")
-    help_test.html(help_node);
+        var builder = CreateSpecificationBuilder();
+
+        var help_cls_btn = builder.Clear()
+            .SetTag('input')
+            .SetAttrebute('type', 'button')
+            .SetValue('X')
+            .Parse();
+
+        var help_text = builder.Clear()
+            .SetTag('ul')
+            .SetAttrebute('style', 'padding: 5px;')
+            .AddInnerHtml(help_node)
+            .Parse();
+
+        var help_container = builder.Clear()
+            .SetTag('div')
+            .SetAttrebute('class', 'position-absolute bg-light p-2 borders borders_inside')
+            .AddInnerHtml(help_cls_btn)
+            .AddInnerHtml(help_text)
+            .Parse();
+
+        var toggle = PopUpToggleInit($(help_container), FullBody);
+
+        $(help_cls_btn).click(toggle.Hide);
+        html_elements.Buttons.HelpButton.click(toggle.ShowInCenter);
+
+        main_page_container.append(help_container);
+        $(help_container).hide()
+    })();
 </script>
 
 <!-- Подтягивание API инифиализации функций для контейнера с результатом -->
