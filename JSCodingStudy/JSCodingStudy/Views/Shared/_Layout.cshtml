@@ -28,6 +28,10 @@
 
     <div class="container body-content">
         <div id="main_page_container">
+            <script>
+                var main_page_container = $('#main_page_container');
+            </script>
+
             @RenderBody()
         </div>
         <hr id="lampc" />
@@ -39,7 +43,6 @@
     <script>
         (function () {
             (function () {
-                var mpc = $('#main_page_container');
                 var nxt = $('#lampc');
                 var navbar = $('.navbar');
                 var footer = $('footer');
@@ -51,7 +54,7 @@
 
                 var height = fbh - nbh - fh - nh;
 
-                mpc.height(height);
+                main_page_container.height(height);
             })();
         })();
     </script>

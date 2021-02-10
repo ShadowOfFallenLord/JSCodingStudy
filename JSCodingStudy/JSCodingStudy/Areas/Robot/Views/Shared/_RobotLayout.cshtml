@@ -92,6 +92,12 @@
 <!-- Подтягивание API переключателя всплывающих окошек -->
 <script src="~/Scripts/Other/PopUpContainerToggle.js"></script>
 
+<script src="~/Scripts/Other/ElementsBuilder.js"></script>
+
+<script>
+    var builder = CreateSpecificationBuilder();
+</script>
+
 <!-- Открытие/закрытие окошка помощи -->
 <script>
     (function () {
@@ -186,7 +192,7 @@ else
     <!-- Растягивание "таблицы" на весь экран -->
     <script>
         (function () {
-            var height = $('#main_page_container').height();
+            var height = main_page_container.height();
             var hp = height / 3;
 
             $('#page_top_row').height(hp * 2);

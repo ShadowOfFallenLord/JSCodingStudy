@@ -35,7 +35,9 @@
             Events: {}
         };
 
-        var instance = {};
+        var instance = function () {
+            return window.CreateJQueryBySpecification(result);
+        }
 
         instance.GetResult = function () {
             return result;
@@ -84,9 +86,7 @@
             return instance;
         }
 
-        instance.Parse = function () {
-            return window.CreateJQueryBySpecification(result);
-        }
+        instance.Parse = instance;
 
         return instance;
     }
