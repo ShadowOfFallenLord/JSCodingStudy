@@ -10,12 +10,19 @@
             result.val(spec.Value);
         }
 
-        if (spec.InnerHtml !== undefined) {
-            result.html(spec.InnerHtml);
+        for (var i in spec.InnerElements) {
+            var cur = spec.InnerElements[i];
+            if (cur.specification) {
+                cur = window.CreateJQueryBySpecification(cur.content);
+            }
+            else {
+                cur = cur.content;
+            }
+            result.append(cur);
         }
 
-        for (var key in spec.Attrebuts) {
-            result.attr(key, spec.Attrebuts[key]);
+        for (var key in spec.Attrebutes) {
+            result.attr(key, spec.Attrebutes[key]);
         }
 
         for (var key in spec.Events) {
@@ -26,32 +33,49 @@
     }
 
     window.CreateSpecificationBuilder = function () {
-        var result = {
-            Tag: undefined,
-            Text: undefined,
-            Value: undefined,
-            InnerHtml: undefined,
-            Attrebuts: {},
-            Events: {}
-        };
+        var result = {};
 
-        var instance = function () {
-            return window.CreateJQueryBySpecification(result);
-        }
-
-        instance.GetResult = function () {
-            return result;
-        }
+        var instance = {};
 
         instance.Clear = function () {
             result = {
                 Tag: undefined,
                 Text: undefined,
                 Value: undefined,
-                InnerHtml: undefined,
-                Attrebuts: {},
+                InnerElements: [],
+                Attrebutes: {},
                 Events: {}
             };
+
+            result.Copy = function () {
+                var temp = {
+                    Tag: this.Tag,
+                    Text: this.Text,
+                    Value: this.Value,
+                    InnerElements: [],
+                    Attrebutes: {},
+                    Events: {}
+                }
+
+                for (var i in this.InnerElements) {
+                    var cur = spec.InnerElements[i];
+                    if (cur.specification) {
+                        cur = cur.Copy();
+                    }
+                    temp.InnerElements.push(cur);
+                }
+
+                for (var key in this.Attrebutes) {
+                    temp.Attrebutes[key] = this.Attrebutes[key];
+                }
+
+                for (var key in this.Events) {
+                    temp.Events[key] = this.Events[key](result);
+                }
+
+                return temp;
+            }
+
             return instance;
         }
 
@@ -60,8 +84,8 @@
             return instance;
         }
 
-        instance.SetAttrebut = function (attr, content) {
-            result.Attrebuts[attr] = content;
+        instance.SetAttrebute = function (attr, content) {
+            result.Attrebutes[attr] = content;
             return instance;
         }
 
@@ -75,19 +99,35 @@
             return instance;
         }
 
-        instance.SetInnerHtml = function (html) {
-            result.InnerHtml = html;
+        instance.AddInnerHtml = function (html) {
+            result.InnerElements.push({
+                specification: false,
+                content: html
+            });
             return instance;
         }
 
-        instance.SetEvent = function (e, handler_creator)
-        {
+        instance.AddInnerSpecification = function (spec) {
+            result.InnerElements.push({
+                specification: true,
+                content: spec
+            });
+            return instance;
+        }
+
+        instance.SetEvent = function (e, handler_creator) {
             result.Events[e] = handler_creator;
             return instance;
         }
 
-        instance.Parse = instance;
+        instance.GetResult = function () {
+            return result.Copy();
+        }
 
-        return instance;
+        instance.Parse = function () {
+            return window.CreateJQueryBySpecification(result);
+        }
+
+        return instance.Clear();
     }
 })();
