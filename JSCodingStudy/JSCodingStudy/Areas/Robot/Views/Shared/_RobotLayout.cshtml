@@ -27,7 +27,7 @@
                 <textarea id="log_display" readonly="true" class="form-control h-100 w-100"></textarea>
             </div>
             <div class="col-8 h-100 borders">
-                @RenderSection("task", required: true)
+                @RenderSection("task")
             </div>
         </div>
     </div>
@@ -110,14 +110,7 @@
     var help = RAPI.GetHelpAPI();
     var help_test = $('#help_text');
 
-    @if (IsSectionDefined("help"))
-    {
-        @RenderSection("help")
-    }
-    else
-    {
-        @:var help_node = help.ParseHelp(help.GetHelp(true, true, true));
-    }
+    @RenderSection("help")
     help_test.html(help_node);
 </script>
 
@@ -160,14 +153,7 @@ else
 
     const delay = 100;
 
-    @if (IsSectionDefined("field_init"))
-    {
-        @RenderSection("field_init")
-    }
-    else
-    {
-        @:var RobotAPI = RAPI.CreateFullRobotAPI(10, 10, true, 5, 5, html_elements.LogDisplay, delay);
-    }
+    @RenderSection("field_init")
 
     html_elements.RobotDisplay.html(RobotAPI.Field.FieldElement);
 
@@ -193,14 +179,7 @@ else
 
 <!-- Установка пользовательского кода -->
 <script>
-    @if (IsSectionDefined("user_code"))
-    {
-        @RenderSection("user_code")
-    }
-    else
-    {
-         @:html_elements.TextInput.val('');
-    }
+    @RenderSection("user_code")
 </script>
 
 @section scripts {
