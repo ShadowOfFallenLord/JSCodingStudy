@@ -197,7 +197,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Other\CreateTempNotice.js" />
-    <Content Include="Scripts\Other\ElementsFactory.js" />
+    <Content Include="Scripts\Other\ElementsBuilder.js" />
     <Content Include="Scripts\Other\PopUpContainerToggle.js" />
     <Content Include="Scripts\Other\ResultContainerFunctionsInit.js" />
     <Content Include="Scripts\popper-utils.js" />
