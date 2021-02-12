@@ -3,13 +3,15 @@
     int LessonId = Model ?? -1;
 }
 
-<script src="~/Scripts/Other/CreateTempNotice.js"></script>
-
 <!-- Для если пройден последний открытый урок можно открыть следующий -->
 <script>
     (function () {
-        var notice = CreateTempNotice('position-absolute bg-light p-2 borders borders_inside', 'Урок пройден!', 'text-success', 'Продолжить', 'btn btn-success');
-        var toggle = PopUpToggleInit(notice, FullBody);
+        var notice = CreatePopUpNotice()
+            .Functions.Text.SetContent('Урок пройден!')
+            .Functions.Text.SetCloseButtonText('Продолжить')
+            .Functions.Classes.SetContainerClass('position-absolute bg-light p-2 borders borders_inside')
+            .Functions.Classes.SetContentClass('text-success')
+            .Functions.Classes.SetCloseButtonClass('btn btn-success');
 
         ResultContainer.Functions.SendSuccess = function () {
             $.ajax({
@@ -20,8 +22,8 @@
                 },
             }).done(function (data) {
                 if (data.updated) {
-                    $('#main_page_container').append(notice);
-                    toggle.ShowInCenter();
+                    notice.Functions.HTML.SetInCenter(main_page_container);
+                    notice.Functions.HTML.AppendTo(main_page_container);
                 }
             });
         };
@@ -31,8 +33,12 @@
 <!-- Для урока можно сохранить полученное решение -->
 <script>
     (function () {
-        var notice = CreateTempNotice('position-absolute bg-light p-2 borders borders_inside', 'Код сохранен!', 'text-success', 'Продолжить', 'btn btn-success');
-        var toggle = PopUpToggleInit(notice, FullBody);
+        var notice = CreatePopUpNotice()
+            .Functions.Text.SetContent('Код сохранен!')
+            .Functions.Text.SetCloseButtonText('Продолжить')
+            .Functions.Classes.SetContainerClass('position-absolute bg-light p-2 borders borders_inside')
+            .Functions.Classes.SetContentClass('text-success')
+            .Functions.Classes.SetCloseButtonClass('btn btn-success');
 
         ResultContainer.Buttons.Save.click(function () {
             $.ajax({
@@ -43,8 +49,8 @@
                     code: html_elements.TextInput.val(),
                 },
             }).done(function (data) {
-                $('#main_page_container').append(notice);
-                toggle.ShowInCenter();
+                notice.Functions.HTML.SetInCenter(main_page_container);
+                notice.Functions.HTML.AppendTo(main_page_container);
             });
         });
     })();

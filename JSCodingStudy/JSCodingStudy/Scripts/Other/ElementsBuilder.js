@@ -130,4 +130,112 @@
 
         return instance.Clear();
     }
+
+    window.CreatePopUpNotice = function () {
+        var builder = window.CreateSpecificationBuilder();
+
+        var result = {
+            Elements: {
+                Content: undefined,
+                CloseButton: undefined,
+                Container: undefined,
+            },
+            Functions: {
+                Text: {
+                    SetContent: undefined,
+                    SetCloseButtonText: undefined,
+                },
+                Classes: {
+                    SetContentClass: undefined,
+                    SetCloseButtonClass: undefined,
+                    SetContainerClass: undefined,
+                },
+                Visability: {
+                    Hide: undefined,
+                    Show: undefined,
+                },
+                HTML: {
+                    SetInCenter: undefined,
+                    AppendTo: undefined,
+                }
+            }
+        };
+
+        // --- Elements ---
+        result.Elements.Content = builder.Clear().SetTag('div').Parse();
+
+        result.Elements.CloseButton = builder.Clear().SetTag('input')
+            .SetAttrebute('type', 'button').Parse();
+
+        result.Elements.Container = builder.Clear().SetTag('div')
+            .AddInnerHtml(result.Elements.Content)
+            .AddInnerHtml(result.Elements.CloseButton)
+            .Parse()
+        // -- End Elements ---
+        // -- Events ---
+        result.Elements.CloseButton.click(function () {
+            result.Elements.Container.detach();
+        })
+        // --- End Events ---
+        // --- Functions Text ---
+        result.Functions.Text.SetContent = function (text) {
+            result.Elements.Content.html(text);
+            return result;
+        };
+
+        result.Functions.Text.SetCloseButtonText = function (text) {
+            result.Elements.CloseButton.val(text);
+            return result;
+        };
+        // --- End Functions Text ---
+        // --- Functions Styles ---
+        result.Functions.Classes.SetContentClass = function (text) {
+            result.Elements.Content.attr('class', text);
+            return result;
+        };
+
+        result.Functions.Classes.SetCloseButtonClass = function (text) {
+            result.Elements.CloseButton.attr('class', text);
+            return result;
+        };
+
+        result.Functions.Classes.SetContainerClass = function (text) {
+            result.Elements.Container.attr('class', text);
+            return result;
+        };
+        // --- End Functions Styles ---
+        // --- Functions Visability ---
+        result.Functions.Visability.Hide = function () {
+            result.Elements.Container.Hide();
+            return result;
+        };
+
+        result.Functions.Visability.Show = function () {
+            result.Elements.Container.Show();
+            return result;
+        };
+        // --- End Functions Visability ---
+        // --- Functions HTML ---
+        result.Functions.HTML.SetInCenter = function (element) {
+            var screen_width = element.width();
+            var screen_heigth = element.height();
+
+            var container_width = result.Elements.Container.width();
+            var container_heigth = result.Elements.Container.height();
+
+            result.Elements.Container.css({
+                left: ((screen_width / 2) - (container_width / 2)),
+                top: ((screen_heigth / 2) - (container_heigth / 2)),
+            });
+            return result;
+        };
+
+        result.Functions.HTML.AppendTo = function (parent) {
+            parent.append(result.Elements.Container);
+            return result;
+        };
+        // --- End Functions HTML ---
+
+        return result;
+    }
 })();
