@@ -89,9 +89,9 @@
 
 <!-- Окошко помощи -->
 <script type="module">
-    import * as RAPI from '@Url.Content("~/Scripts/Robot/RobotAPI/GeneralRobotAPI.js")';
+    import { GetHelpAPI } from '@Url.Content("~/Scripts/Robot/RobotHelp.js")';
     (function () {
-        var help = RAPI.GetHelpAPI();
+        var help = GetHelpAPI();
         @RenderSection("help")
 
         var builder = CreateSpecificationBuilder();

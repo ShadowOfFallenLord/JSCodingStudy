@@ -211,6 +211,7 @@
     <Content Include="Scripts\Robot\RobotAPI\RobotControler.js" />
     <Content Include="Scripts\Robot\RobotAPI\Robot\RobotAPI.js" />
     <Content Include="Scripts\Robot\RobotAPI\Robot\RobotConstants.js" />
+    <Content Include="Scripts\Robot\RobotHelp.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
     <Content Include="Scripts\src\methods\destroy.js" />
