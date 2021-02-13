@@ -37,6 +37,7 @@
         // Для урока можно сохранить полученное решение
         (function () {
             var success_notice = CreateNotice('Код сохранен!', 'text-success', 'btn btn-success');
+            var error_notice = CreateNotice('Код не сохранен!', 'text-danger', 'btn btn-danger');
 
             ResultContainer.Buttons.Save.click(function () {
                 $.ajax({
@@ -50,6 +51,9 @@
                     if (data.updated) {
                         success_notice.Functions.HTML.SetInCenter(main_page_container);
                         success_notice.Functions.HTML.AppendTo(main_page_container);
+                    } else {
+                        error_notice.Functions.HTML.SetInCenter(main_page_container);
+                        error_notice.Functions.HTML.AppendTo(main_page_container);
                     }
                 });
             });
