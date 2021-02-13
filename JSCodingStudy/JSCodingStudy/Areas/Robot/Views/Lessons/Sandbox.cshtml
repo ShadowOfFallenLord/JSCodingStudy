@@ -21,14 +21,14 @@
     @{
         string code = @"while(Robot.Check(Directions.Up, Checks.Void))
 {
-Robot.Move(Directions.Up);
-Robot.Draw();
+    Robot.Move(Directions.Up);
+    Robot.Draw();
 }
 Robot.Move(Directions.Right);
 for(var i = 0; i < 4; i++)
 {
-Robot.Move(Directions.Up);
-Robot.Draw();
+    Robot.Move(Directions.Up);
+    Robot.Draw();
 }";
     }
     html_elements.TextInput.val(`@Html.Raw(code)`);
