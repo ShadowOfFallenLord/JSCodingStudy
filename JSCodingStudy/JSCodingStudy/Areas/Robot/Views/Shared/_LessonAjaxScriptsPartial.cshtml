@@ -3,55 +3,54 @@
     int LessonId = Model ?? -1;
 }
 
-<!-- Для если пройден последний открытый урок можно открыть следующий -->
 <script>
     (function () {
-        var notice = CreatePopUpNotice()
-            .Functions.Text.SetContent('Урок пройден!')
-            .Functions.Text.SetCloseButtonText('Продолжить')
-            .Functions.Classes.SetContainerClass('position-absolute bg-light p-2 borders borders_inside')
-            .Functions.Classes.SetContentClass('text-success')
-            .Functions.Classes.SetCloseButtonClass('btn btn-success');
+        function CreateNotice(text) {
+            return CreatePopUpNotice()
+                .Functions.Text.SetContent(text)
+                .Functions.Text.SetCloseButtonText('Продолжить')
+                .Functions.Classes.SetContainerClass('position-absolute bg-light p-2 borders borders_inside')
+                .Functions.Classes.SetContentClass('text-success')
+                .Functions.Classes.SetCloseButtonClass('btn btn-success');
+        }
 
-        ResultContainer.Functions.SendSuccess = function () {
-            $.ajax({
-                url: '@Url.Action("SuccessLesson", "Lessons")',
-                type: 'post',
-                data: {
-                    id: @LessonId,
-                },
-            }).done(function (data) {
-                if (data.updated) {
+        // Для если пройден последний открытый урок можно открыть следующий
+        (function () {
+            var notice = CreateNotice('Урок пройден!');
+
+            ResultContainer.Functions.SendSuccess = function () {
+                $.ajax({
+                    url: '@Url.Action("SuccessLesson", "Lessons")',
+                    type: 'post',
+                    data: {
+                        id: @LessonId,
+                    },
+                }).done(function (data) {
+                    if (data.updated) {
+                        notice.Functions.HTML.SetInCenter(main_page_container);
+                        notice.Functions.HTML.AppendTo(main_page_container);
+                    }
+                });
+            };
+        })();
+
+        // Для урока можно сохранить полученное решение
+        (function () {
+            var notice = CreateNotice('Код сохранен!');
+
+            ResultContainer.Buttons.Save.click(function () {
+                $.ajax({
+                    url: '@Url.Action("SaveCode", "Lessons")',
+                    type: 'post',
+                    data: {
+                        id: @LessonId,
+                        code: html_elements.TextInput.val(),
+                    },
+                }).done(function (data) {
                     notice.Functions.HTML.SetInCenter(main_page_container);
                     notice.Functions.HTML.AppendTo(main_page_container);
-                }
+                });
             });
-        };
-    })();
-</script>
-
-<!-- Для урока можно сохранить полученное решение -->
-<script>
-    (function () {
-        var notice = CreatePopUpNotice()
-            .Functions.Text.SetContent('Код сохранен!')
-            .Functions.Text.SetCloseButtonText('Продолжить')
-            .Functions.Classes.SetContainerClass('position-absolute bg-light p-2 borders borders_inside')
-            .Functions.Classes.SetContentClass('text-success')
-            .Functions.Classes.SetCloseButtonClass('btn btn-success');
-
-        ResultContainer.Buttons.Save.click(function () {
-            $.ajax({
-                url: '@Url.Action("SaveCode", "Lessons")',
-                type: 'post',
-                data: {
-                    id: @LessonId,
-                    code: html_elements.TextInput.val(),
-                },
-            }).done(function (data) {
-                notice.Functions.HTML.SetInCenter(main_page_container);
-                notice.Functions.HTML.AppendTo(main_page_container);
-            });
-        });
+        })();
     })();
 </script>
