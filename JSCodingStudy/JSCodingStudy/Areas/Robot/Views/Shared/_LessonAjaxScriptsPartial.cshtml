@@ -16,7 +16,7 @@
 
         // Для если пройден последний открытый урок можно открыть следующий
         (function () {
-            var notice = CreateNotice('Урок пройден!');
+            var success_notice = CreateNotice('Урок пройден!');
 
             ResultContainer.Functions.SendSuccess = function () {
                 $.ajax({
@@ -27,8 +27,8 @@
                     },
                 }).done(function (data) {
                     if (data.updated) {
-                        notice.Functions.HTML.SetInCenter(main_page_container);
-                        notice.Functions.HTML.AppendTo(main_page_container);
+                        success_notice.Functions.HTML.SetInCenter(main_page_container);
+                        success_notice.Functions.HTML.AppendTo(main_page_container);
                     }
                 });
             };
@@ -36,7 +36,7 @@
 
         // Для урока можно сохранить полученное решение
         (function () {
-            var notice = CreateNotice('Код сохранен!');
+            var success_notice = CreateNotice('Код сохранен!');
 
             ResultContainer.Buttons.Save.click(function () {
                 $.ajax({
@@ -48,8 +48,8 @@
                     },
                 }).done(function (data) {
                     if (data.updated) {
-                        notice.Functions.HTML.SetInCenter(main_page_container);
-                        notice.Functions.HTML.AppendTo(main_page_container);
+                        success_notice.Functions.HTML.SetInCenter(main_page_container);
+                        success_notice.Functions.HTML.AppendTo(main_page_container);
                     }
                 });
             });
