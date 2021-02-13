@@ -70,6 +70,11 @@ namespace JSCodingStudy.Areas.Robot.Controllers
                 flag = user_logic.UpdateLessons(user);
             }
 
+            if(!flag)
+            {
+                user.RobotLastLesson--;
+            }
+
             return Json(new { success = true, updated = flag });
         }
 
@@ -78,9 +83,9 @@ namespace JSCodingStudy.Areas.Robot.Controllers
         {
             UserEntities.User user = user_logic.GetByLogin(HttpContext.User.Identity.Name);
 
-            code_logic.Set(user.Id, id, code);
+            bool flag = code_logic.Set(user.Id, id, code);
 
-            return Json(new { success = true });
+            return Json(new { success = true, updated = flag });
         }
     }
 }
