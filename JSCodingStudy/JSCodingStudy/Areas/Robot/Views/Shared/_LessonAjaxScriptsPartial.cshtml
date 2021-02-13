@@ -47,8 +47,10 @@
                         code: html_elements.TextInput.val(),
                     },
                 }).done(function (data) {
-                    notice.Functions.HTML.SetInCenter(main_page_container);
-                    notice.Functions.HTML.AppendTo(main_page_container);
+                    if (data.updated) {
+                        notice.Functions.HTML.SetInCenter(main_page_container);
+                        notice.Functions.HTML.AppendTo(main_page_container);
+                    }
                 });
             });
         })();
