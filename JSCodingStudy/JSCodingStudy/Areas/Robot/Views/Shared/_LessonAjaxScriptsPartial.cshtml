@@ -5,18 +5,18 @@
 
 <script>
     (function () {
-        function CreateNotice(text) {
+        function CreateNotice(text, text_class, btn_class) {
             return CreatePopUpNotice()
                 .Functions.Text.SetContent(text)
                 .Functions.Text.SetCloseButtonText('Продолжить')
                 .Functions.Classes.SetContainerClass('position-absolute bg-light p-2 borders borders_inside')
-                .Functions.Classes.SetContentClass('text-success')
-                .Functions.Classes.SetCloseButtonClass('btn btn-success');
+                .Functions.Classes.SetContentClass(text_class)
+                .Functions.Classes.SetCloseButtonClass(btn_class);
         }
 
         // Для если пройден последний открытый урок можно открыть следующий
         (function () {
-            var success_notice = CreateNotice('Урок пройден!');
+            var success_notice = CreateNotice('Урок пройден!', 'text-success', 'btn btn-success');
 
             ResultContainer.Functions.SendSuccess = function () {
                 $.ajax({
@@ -36,7 +36,7 @@
 
         // Для урока можно сохранить полученное решение
         (function () {
-            var success_notice = CreateNotice('Код сохранен!');
+            var success_notice = CreateNotice('Код сохранен!', 'text-success', 'btn btn-success');
 
             ResultContainer.Buttons.Save.click(function () {
                 $.ajax({
