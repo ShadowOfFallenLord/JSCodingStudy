@@ -68,11 +68,11 @@ namespace JSCodingStudy.Areas.Robot.Controllers
             {
                 user.RobotLastLesson++;
                 flag = user_logic.UpdateLessons(user);
-            }
 
-            if(!flag)
-            {
-                user.RobotLastLesson--;
+                if (!flag)
+                {
+                    user.RobotLastLesson--;
+                }
             }
 
             return Json(new { success = true, updated = flag });
