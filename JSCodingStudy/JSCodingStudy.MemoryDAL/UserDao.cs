@@ -10,15 +10,25 @@ namespace JSCodingStudy.MemoryDAL
 {
     public class UserDao : IUserDao
     {
+        public static User FullUser { get; } = new User()
+        {
+            Id = 1,
+            Login = "userf",
+            Password = "123",
+            RobotLastLesson = Robot.RobotLessonDao.LessonsCount,
+        };
+
         private List<User> users;
 
         public UserDao()
         {
             users = new List<User>();
 
+            users.Add(FullUser);
+
             users.Add(new User
             {
-                Id = 1,
+                Id = 2,
                 Login = "user1",
                 Password = "123",
                 RobotLastLesson = 1,

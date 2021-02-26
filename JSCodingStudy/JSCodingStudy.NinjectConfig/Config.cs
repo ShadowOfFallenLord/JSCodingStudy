@@ -54,7 +54,7 @@ namespace JSCodingStudy.NinjectConfig
         {
             kernel
                 .Bind<DALInterfaces.IUserCodeDao<RobotLessonData>>()
-                .To<MemoryDAL.UserCodeDao<RobotLessonData>>()
+                .To<MemoryDAL.Robot.RobotUserCodeDao>()
                 .InSingletonScope();
 
             kernel

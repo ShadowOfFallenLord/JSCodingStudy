@@ -43,7 +43,7 @@ namespace JSCodingStudy.MemoryDAL
             return false;
         }
 
-        private string this[int user_id, int lesson_id]
+        protected string this[int user_id, int lesson_id]
         {
             get
             {
@@ -75,7 +75,7 @@ namespace JSCodingStudy.MemoryDAL
             }
         }
 
-        private bool CheckHas(int user_id, int lesson_id)
+        protected bool CheckHas(int user_id, int lesson_id)
         {
             if (!codes.ContainsKey(user_id))
             {

@@ -10,6 +10,8 @@ namespace JSCodingStudy.MemoryDAL.Robot
 {
     public class RobotLessonDao : LessonDao<RobotLessonData>
     {
+        public const int LessonsCount = 3;
+
         public RobotLessonDao()
         {
             lessons.Add(GenerateLesson1());
@@ -17,7 +19,7 @@ namespace JSCodingStudy.MemoryDAL.Robot
             lessons.Add(GenerateLesson3());
         }
 
-        private RobotLessonData GenerateLesson1()
+        private static RobotLessonData GenerateLesson1()
         {
             return new RobotLessonData
             {
@@ -47,7 +49,7 @@ namespace JSCodingStudy.MemoryDAL.Robot
             };
         }
 
-        private RobotLessonData GenerateLesson2()
+        private static RobotLessonData GenerateLesson2()
         {
             return new RobotLessonData
             {
@@ -77,7 +79,7 @@ namespace JSCodingStudy.MemoryDAL.Robot
             };
         }
 
-        private RobotLessonData GenerateLesson3()
+        private static RobotLessonData GenerateLesson3()
         {
             return new RobotLessonData
             {
