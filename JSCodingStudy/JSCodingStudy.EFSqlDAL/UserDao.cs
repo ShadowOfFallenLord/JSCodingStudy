@@ -12,7 +12,7 @@ namespace JSCodingStudy.EFSqlDAL
     {
         public bool Add(User user)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); 
         }
 
         public IEnumerable<User> GetAll()
