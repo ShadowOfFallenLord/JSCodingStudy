@@ -28,7 +28,6 @@ namespace JSCodingStudy.NinjectConfig
             kernel
                 .Bind<DALInterfaces.IUserDao>()
                 .To<MemoryDAL.UserDao>()
-                //.To<EFSqlDAL.UserDao>()
                 .InSingletonScope();
 
             kernel
