@@ -10,11 +10,7 @@
 }
 
 @section task {
-    @foreach (string s in @Model.Task.Split('\n'))
-    {
-        @s
-        <br />
-    }
+    @Model.Task
 }
 
 @section help {
