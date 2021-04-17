@@ -16,12 +16,12 @@ export function CreateLoger(html) {
      */
     var loger = {
         Add: function(message) {
-            var text = html.innerHTML;
+            var text = html.val();
             text = text + message + '\n';
-            html.innerHTML = text;
+            html.val(text);
         },
         Clear: function() {
-            html.innerText = '';
+            html.val('');
         }
     }
     return loger;

@@ -99,10 +99,10 @@ export function CreateRobotControler(x, y, field) {
 
             var cell = field.Rows[y].Columns[x];
             switch (variant.Id) {
-                case RobotConstants.CheckVariants.Void.Id:
-                    return cell.Content.Value == FieldConstants.CellContents.Void.Value;
                 case RobotConstants.CheckVariants.Wall.Id:
                     return cell.Content.Value == FieldConstants.CellContents.Wall.Value;
+                case RobotConstants.CheckVariants.Void.Id:
+                    return cell.Content.Value != FieldConstants.CellContents.Wall.Value;
                 case RobotConstants.CheckVariants.Clear.Id:
                     return cell.Color.Value == FieldConstants.CellColors.Void.Value;
                 case RobotConstants.CheckVariants.Filled.Id:
