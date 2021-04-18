@@ -18,21 +18,23 @@ namespace JSCodingStudy.MemoryDAL
             RobotLastLesson = Robot.RobotLessonDao.LessonsCount,
         };
 
+        public static User TestUser { get; } = new User()
+        {
+            Id = 2,
+            Login = "user1",
+            Password = "123",
+            RobotLastLesson = 1,
+        };
+
         private List<User> users;
 
         public UserDao()
         {
-            users = new List<User>();
-
-            users.Add(FullUser);
-
-            users.Add(new User
+            users = new List<User>
             {
-                Id = 2,
-                Login = "user1",
-                Password = "123",
-                RobotLastLesson = 1,
-            });
+                FullUser,
+                TestUser
+            };
         }
 
         public bool Add(User user)

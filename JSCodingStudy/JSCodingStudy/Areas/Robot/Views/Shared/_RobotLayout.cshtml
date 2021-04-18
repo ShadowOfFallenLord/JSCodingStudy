@@ -190,7 +190,9 @@ else
 
 <!-- Установка пользовательского кода -->
 <script>
+    var user_code = '';
     @RenderSection("user_code")
+    html_elements.TextInput.val(user_code);
 </script>
 
 @section scripts {

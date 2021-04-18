@@ -28,5 +28,5 @@
 }
 
 @section user_code {
-    html_elements.TextInput.val(`@Model.Code`);
+    var user_code = `@Html.Raw(@Model.Code)`;
 }
